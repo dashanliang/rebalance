@@ -100,16 +100,16 @@ goalopt = np.ones(goal1 ,dtype = np.int)
 
 goalList = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
 
-def getinequality(in_data = [x11], out_data = [x11]):
-    inequalityData = np.zeros(len(goalList), dtype= np.int)
+def getinequality(in_data = [x11], out_data = [x11], allNode = [x11]):
+    inequalityData = np.zeros(len(allNode), dtype= np.int)
     for mh in in_data :
-        for index, mh_node in enumerate(goalList):
+        for index, mh_node in enumerate(allNode):
             if mh.__name__ == mh_node.__name__ :
                 inequalityData[index] = 1
                 break
 
     for mh in out_data :
-        for index, mh_node in enumerate(goalList):
+        for index, mh_node in enumerate(allNode):
             if mh.__name__ == mh_node.__name__ :
                 inequalityData[index] = -1
                 break
@@ -118,24 +118,89 @@ def getinequality(in_data = [x11], out_data = [x11]):
 
 
 # 对于anz cc 等 生成对应的 不等式
-anz = getinequality(ANZ_IN[0], ANZ_OUT[0])
+anz = getinequality(ANZ_IN[0], ANZ_OUT[0], goalList)
 
-cc = getinequality(CC_IN[0], CC_OUT[0])
+cc = getinequality(CC_IN[0], CC_OUT[0], goalList)
 
-scbhk = getinequality(SCBHK_IN[0], SCBHK_OUT[0])
+scbhk = getinequality(SCBHK_IN[0], SCBHK_OUT[0], goalList)
 
-scbsg = getinequality(SCBSG_IN[0], SCBSG_OUT[0])
+scbsg = getinequality(SCBSG_IN[0], SCBSG_OUT[0], goalList)
 
-dbhk = getinequality(DBHK_IN[0], DBHK_OUT[0])
+dbhk = getinequality(DBHK_IN[0], DBHK_OUT[0], goalList)
 
-dbshk = getinequality(DBSHK_IN[0], DBSHK_OUT[0])
+dbshk = getinequality(DBSHK_IN[0], DBSHK_OUT[0], goalList)
 
 a = np.array([anz, cc, scbhk, scbsg, dbhk, dbshk])
-print(-a)
-b = np.array([20, 20, 20, 0, 50, 0])
+print(a)
+b = np.array([-20, -20, -20, 1000, -50, 500])
 
-print(-b)
+print(b)
 print(goalopt)
-res = optimize.linprog(goalopt, A_ub=a, b_ub=b, bounds=((20, 1000), (20, 1500), (5, 1500), (50, 500), (50, 500)))
+res = optimize.linprog(goalopt, A_ub=-a, b_ub=b, bounds=((0.1, None), (0.1, None), (0.1, None), (0.1, None), (0.1, None)))
 
 print(res)
+
+# 如果 level全集 加入可以 rebalance 从 1 1 1 1 1 1 开始 选取 最优
+# level 1 路径生成器
+# 每组要1个
+
+def generateAllNeedAdd():
+    # return np.arange(5, len(goalList), 1)
+    return np.arange(1, len(goalList) + 1 -5, 1)
+# get
+
+
+def getMhs(mhindex = 0):
+    return []
+
+def getMhAllValite(paths = [], needPart = 0):
+    nodeLen = len(paths)
+    alldata = list(combinations(np.arange(1, len(paths) + 1), needPart))
+    allValite = []
+    for node in alldata:
+        tmpNode = np.zeros(nodeLen, dtype= int)
+        for tmp in node:
+            tmpNode[tmp-1] = 1
+        allValite.append(tmpNode)
+    return allValite
+
+print(getMhAllValite(np.array([11,22,33,44,55]), 6))
+
+def filterAndCheck(data = [[[]]]):
+    return [[]]
+
+
+def getAllNeed(tmpNeedMhs = [[]], tmpPart = []):
+    i = 0
+    candidateAllTmp = []
+    goodPath = []
+    for needMhs in tmpNeedMhs:
+        for mh in needMhs:
+            for path in mh:
+                candaditePaths = getMhs[path]
+                candidateAllTmp = candidateAllTmp + getMhAllValite(candaditePaths, tmpPart[i])
+                goodPath = goodPath + filterAndCheck(candidateAllTmp)
+
+    return goodPath
+
+# add level 2, get at least nodes
+def add2isokGetLeastPaths(addNumber = 1, level1AllNodes = [x11]):
+    if(addNumber <= 0 ):
+        return []
+
+    canCutNode = np.arange(0, addNumber, 1)
+    tmpAll = []
+    for i in canCutNode:
+        tmpParts = getCutParts(addNumber, i)
+        for tmpPart in tmpParts:
+            needmhs = len(tmpPart)
+            if(needmhs <= 6):
+                tmpNeedMhs = list(combinations(5, needmhs))
+                tmp = getAllNeed(tmpNeedMhs, tmpPart)
+                tmpAll = tmpAll + tmp
+        if len(tmpAll) >0 :
+            break
+
+    return tmpAll
+
+
