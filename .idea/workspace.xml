@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89614635-f605-4117-8b32-df9d5eae0ffc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/rebalance/common/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/rebalance/common/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="198" selection-start-line="198" selection-end-line="198" />
+            <state relative-caret-position="240">
+              <caret line="241" column="17" lean-forward="true" selection-start-line="241" selection-start-column="17" selection-end-line="241" selection-end-column="17" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -90,8 +89,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1370" />
-    <option name="y" value="-498" />
+    <option name="x" value="-1684" />
+    <option name="y" value="-535" />
     <option name="width" value="1440" />
     <option name="height" value="777" />
   </component>
@@ -235,15 +234,15 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1370" y="-498" width="1440" height="777" extended-state="0" />
+    <frame x="-1684" y="-535" width="1440" height="777" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.1788269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2671533" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.46569344" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47445256" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28467155" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -284,19 +283,59 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <line>235</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <line>207</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <line>212</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <line>213</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
           <line>214</line>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
           <line>215</line>
-          <option name="timeStamp" value="8" />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <line>178</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>candidateAllTmp.append(getMhAllValite(candaditePaths, tmpPart[i]))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getMhAllValite(candaditePaths, tmpPart[i])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getMhs(mh, level)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>a[0]</expression-string>
         <language-id>Python</language-id>
@@ -327,27 +366,6 @@ datatmp0</expression-string>
       <expression>
         <expression-string>datatmp0 = data[0]
 datatmp1 = data[1]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>datatmp0 = data[0]
-datatmp1 = data[1]
-data[0] = list(datatmp0).append(list(datatmp1))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>datatmp0 = data[0]
-datatmp1 = data[1]
-data[0] = list(datatmp0).append(datatmp1)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>datatmp0 = data[0]
-datatmp1 = data[1]
-data[0] = list(datatmp0).extend(datatmp1)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -421,8 +439,8 @@ data[0] = list(datatmp0).extend(datatmp1)</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/com/rebalance/common/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="198" selection-start-line="198" selection-end-line="198" />
+        <state relative-caret-position="240">
+          <caret line="241" column="17" lean-forward="true" selection-start-line="241" selection-start-column="17" selection-end-line="241" selection-end-column="17" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>

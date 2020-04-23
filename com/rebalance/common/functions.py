@@ -99,7 +99,9 @@ goal1 = len(ANZ_IN[0]) + len(CC_IN[0]) + len(SCBHK_IN[0]) + len(SCBSG_IN[0]) + l
 
 goalopt = np.ones(goal1 ,dtype = np.int)
 
-goalList = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
+goalListLevel1 = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
+
+goalListLevel2 = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
 
 def getinequality(in_data = [x11], out_data = [x11], allNode = [x11]):
     inequalityData = np.zeros(len(allNode), dtype= np.int)
@@ -119,17 +121,17 @@ def getinequality(in_data = [x11], out_data = [x11], allNode = [x11]):
 
 
 # 对于anz cc 等 生成对应的 不等式
-anz = getinequality(ANZ_IN[0], ANZ_OUT[0], goalList)
+anz = getinequality(ANZ_IN[0], ANZ_OUT[0], goalListLevel1)
 
-cc = getinequality(CC_IN[0], CC_OUT[0], goalList)
+cc = getinequality(CC_IN[0], CC_OUT[0], goalListLevel1)
 
-scbhk = getinequality(SCBHK_IN[0], SCBHK_OUT[0], goalList)
+scbhk = getinequality(SCBHK_IN[0], SCBHK_OUT[0], goalListLevel1)
 
-scbsg = getinequality(SCBSG_IN[0], SCBSG_OUT[0], goalList)
+scbsg = getinequality(SCBSG_IN[0], SCBSG_OUT[0], goalListLevel1)
 
-dbhk = getinequality(DBHK_IN[0], DBHK_OUT[0], goalList)
+dbhk = getinequality(DBHK_IN[0], DBHK_OUT[0], goalListLevel1)
 
-dbshk = getinequality(DBSHK_IN[0], DBSHK_OUT[0], goalList)
+dbshk = getinequality(DBSHK_IN[0], DBSHK_OUT[0], goalListLevel1)
 
 a = np.array([anz, cc, scbhk, scbsg, dbhk, dbshk])
 print(a)
@@ -147,12 +149,12 @@ print(res)
 
 def generateAllNeedAdd():
     # return np.arange(5, len(goalList), 1)
-    return np.arange(1, len(goalList) + 1 -5, 1)
+    return np.arange(1, len(goalListLevel1) + 1 -5, 1)
 # get
 
 
 def getMhs(mhindex = 0, level = 2):
-    return []
+    return [1, 2, 3]
 
 def getMhAllValite(paths = [], needPart = 0):
     nodeLen = len(paths)
@@ -173,15 +175,12 @@ def descartes(firstdata = [], senddata = []):
         data.append(list(x))
     return data
 
-class Infinit:
-    def __iter__(self):
-        return self
-    def __next__(self):
-        return None
-
 def filterAndCheck(data = [[[]]], mhs = []):
     dataRet = []
     for eachMhs in data:
+        if len(data) == 1 :
+            dataRet = eachMhs
+            return dataRet
         if len(list(dataRet)) == 0:
             dataRet = eachMhs
             continue
@@ -204,29 +203,6 @@ def filterAndCheck(data = [[[]]], mhs = []):
         realData.append(rightdata)
     return realData
 
-a = filterAndCheck([[[1, 2],[2]], [[3],[4]]], [1,3])
-print(a[0])
-retData = []
-tmpdata = []
-tmplen = 1
-tmp = a[0]
-for edata in np.arange(0, tmplen, 1):
-    retData.append(tmp[1])
-    tmp = tmp.pop(0)
-    if type(tmp[0]).__name__  != 'list':
-        retData.append(tmp)
-print(len(retData))
-print(retData)
-
-rightdata = []
-for empData in retData:
-    rightdata.insert(0, empData)
-
-print(rightdata)
-
-
-
-
 def getAllNeed(tmpNeedMhs = [[]], tmpPart = [], level = 2):
     goodPath = []
     for needMhs in tmpNeedMhs:
@@ -242,6 +218,9 @@ def getAllNeed(tmpNeedMhs = [[]], tmpPart = [], level = 2):
         goodPath.extend(goodones)
     return goodPath
 
+def getMhSize():
+    return 6
+
 # add level 2, get at least nodes
 def add2isokGetLeastPaths(addNumber = 1, level1AllNodes = [x11]):
     if(addNumber <= 0 ):
@@ -253,16 +232,16 @@ def add2isokGetLeastPaths(addNumber = 1, level1AllNodes = [x11]):
         tmpParts = getCutParts(addNumber, i)
         for tmpPart in tmpParts:
             needmhs = len(tmpPart)
-            if(needmhs <= 6):
-                tmpNeedMhs = list(combinations(np.arange(0, 5), needmhs))
-                tmp = getAllNeed(tmpNeedMhs, tmpPart)
-                if len(tmp) > 0:
-                    tmpAll.extend(tmp)
+            tmpNeedMhs = list(combinations(np.arange(0, 6), needmhs))
+            tmp = getAllNeed(tmpNeedMhs, tmpPart)
+            if len(tmp) > 0:
+               tmpAll.extend(tmp)
         if len(tmpAll) >0 :
             break
 
     return tmpAll
 
+print(add2isokGetLeastPaths(1))
 
 
 
