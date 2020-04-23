@@ -1,6 +1,7 @@
 from itertools import combinations, permutations
 import numpy as np
 from scipy import optimize
+from itertools import product
 
 
 def getCutParts(a, b):
@@ -150,7 +151,7 @@ def generateAllNeedAdd():
 # get
 
 
-def getMhs(mhindex = 0):
+def getMhs(mhindex = 0, level = 2):
     return []
 
 def getMhAllValite(paths = [], needPart = 0):
@@ -164,23 +165,81 @@ def getMhAllValite(paths = [], needPart = 0):
         allValite.append(tmpNode)
     return allValite
 
-print(getMhAllValite(np.array([11,22,33,44,55]), 6))
-
-def filterAndCheck(data = [[[]]]):
-    return [[]]
 
 
-def getAllNeed(tmpNeedMhs = [[]], tmpPart = []):
-    i = 0
-    candidateAllTmp = []
+def descartes(firstdata = [], senddata = []):
+    data = []
+    for x in product(firstdata, senddata):
+        data.append(list(x))
+    return data
+
+class Infinit:
+    def __iter__(self):
+        return self
+    def __next__(self):
+        return None
+
+def filterAndCheck(data = [[[]]], mhs = []):
+    dataRet = []
+    for eachMhs in data:
+        if len(list(dataRet)) == 0:
+            dataRet = eachMhs
+            continue
+        datatmp = []
+        datatmp.extend(eachMhs)
+        dataRet = descartes(dataRet, datatmp)
+
+    realData = []
+    for dataeach in dataRet:
+        tmp = dataeach
+        retData = []
+        for i in np.arange(0, len(mhs) -1, 1):
+            retData.append(tmp[1])
+            tmp = tmp.pop(0)
+            if type(tmp[0]).__name__ != 'list':
+                retData.append(tmp)
+        rightdata = []
+        for empData in retData:
+            rightdata.insert(0, empData)
+        realData.append(rightdata)
+    return realData
+
+a = filterAndCheck([[[1, 2],[2]], [[3],[4]]], [1,3])
+print(a[0])
+retData = []
+tmpdata = []
+tmplen = 1
+tmp = a[0]
+for edata in np.arange(0, tmplen, 1):
+    retData.append(tmp[1])
+    tmp = tmp.pop(0)
+    if type(tmp[0]).__name__  != 'list':
+        retData.append(tmp)
+print(len(retData))
+print(retData)
+
+rightdata = []
+for empData in retData:
+    rightdata.insert(0, empData)
+
+print(rightdata)
+
+
+
+
+def getAllNeed(tmpNeedMhs = [[]], tmpPart = [], level = 2):
     goodPath = []
     for needMhs in tmpNeedMhs:
+        i = 0
+        candidateAllTmp = []
+        goodones = []
         for mh in needMhs:
-            for path in mh:
-                candaditePaths = getMhs[path]
-                candidateAllTmp = candidateAllTmp + getMhAllValite(candaditePaths, tmpPart[i])
-                goodPath = goodPath + filterAndCheck(candidateAllTmp)
-
+            candaditePaths = getMhs(mh, level)
+            candidateAllTmp.append(getMhAllValite(candaditePaths, tmpPart[i]))
+            if (len(candidateAllTmp) == len(needMhs)):
+                goodones = filterAndCheck(candidateAllTmp, needMhs)
+            i = i+1
+        goodPath.extend(goodones)
     return goodPath
 
 # add level 2, get at least nodes
@@ -195,12 +254,16 @@ def add2isokGetLeastPaths(addNumber = 1, level1AllNodes = [x11]):
         for tmpPart in tmpParts:
             needmhs = len(tmpPart)
             if(needmhs <= 6):
-                tmpNeedMhs = list(combinations(5, needmhs))
+                tmpNeedMhs = list(combinations(np.arange(0, 5), needmhs))
                 tmp = getAllNeed(tmpNeedMhs, tmpPart)
-                tmpAll = tmpAll + tmp
+                if len(tmp) > 0:
+                    tmpAll.extend(tmp)
         if len(tmpAll) >0 :
             break
 
     return tmpAll
+
+
+
 
 
