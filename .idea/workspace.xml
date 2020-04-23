@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89614635-f605-4117-8b32-df9d5eae0ffc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/rebalance/common/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/rebalance/common/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="241" column="17" lean-forward="true" selection-start-line="241" selection-start-column="17" selection-end-line="241" selection-end-column="17" />
+            <state relative-caret-position="178">
+              <caret line="226" column="22" lean-forward="true" selection-start-line="226" selection-start-column="22" selection-end-line="226" selection-end-column="22" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -45,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2019.1/python_stubs/-1199943126/builtins.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55770">
-              <caret line="3718" column="8" selection-start-line="3718" selection-start-column="8" selection-end-line="3718" selection-end-column="8" />
+            <state relative-caret-position="354">
+              <caret line="3622" column="8" selection-start-line="3622" selection-start-column="8" selection-end-line="3622" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -88,11 +89,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-1684" />
-    <option name="y" value="-535" />
-    <option name="width" value="1440" />
-    <option name="height" value="777" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="180" />
+    <option name="y" value="132" />
+    <option name="width" value="1080" />
+    <option name="height" value="659" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -234,20 +235,21 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1684" y="-535" width="1440" height="777" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.1788269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47445256" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28467155" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25732484" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.44713375" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299363" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3620438" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.054014597" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.24671532" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -283,44 +285,75 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
-          <line>235</line>
-          <option name="timeStamp" value="9" />
+          <line>250</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
-          <line>207</line>
-          <option name="timeStamp" value="10" />
+          <line>297</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
-          <line>212</line>
-          <option name="timeStamp" value="12" />
+          <line>244</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
-          <line>213</line>
-          <option name="timeStamp" value="13" />
+          <line>199</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
-          <line>214</line>
-          <option name="timeStamp" value="14" />
+          <line>218</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
-          <line>215</line>
-          <option name="timeStamp" value="15" />
+          <line>225</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
-          <line>178</line>
-          <option name="timeStamp" value="16" />
+          <line>231</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <line>230</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>dataRet</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>mhs</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>oneToPart</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>candidateAllTmp.append(getMhAllValite(candaditePaths, tmpPart[i]))
+candidateAllTmp</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>candidateAllTmp.append(getMhAllValite(candaditePaths, tmpPart[i]))</expression-string>
         <language-id>Python</language-id>
@@ -332,40 +365,12 @@
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>getMhs(mh, level)</expression-string>
+        <expression-string>tmpPart[i-1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>a[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data[1]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>datatmp0 = data[0]
-datatmp1 = data[1]
-datatmp0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>datatmp0 = data[0]
-datatmp1 = data[1]</expression-string>
+        <expression-string>tmpPart[i]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -420,13 +425,6 @@ datatmp1 = data[1]</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2019.1/python_stubs/-1199943126/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55770">
-          <caret line="3718" column="8" selection-start-line="3718" selection-start-column="8" selection-end-line="3718" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2019.1/python_stubs/-1199943126/itertools.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7590">
@@ -437,10 +435,17 @@ datatmp1 = data[1]</expression-string>
     <entry file="file://$PROJECT_DIR$/com/rebalance/common/gradient.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2019.1/python_stubs/-1199943126/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="3622" column="8" selection-start-line="3622" selection-start-column="8" selection-end-line="3622" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/com/rebalance/common/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="241" column="17" lean-forward="true" selection-start-line="241" selection-start-column="17" selection-end-line="241" selection-end-column="17" />
+        <state relative-caret-position="178">
+          <caret line="226" column="22" lean-forward="true" selection-start-line="226" selection-start-column="22" selection-end-line="226" selection-end-column="22" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>

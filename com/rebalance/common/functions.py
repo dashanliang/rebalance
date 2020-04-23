@@ -94,12 +94,28 @@ DBSHK_BALANCE = 500
 DBSHK_NEED = 0
 
 
+
 # check level one is ok or not
 goal1 = len(ANZ_IN[0]) + len(CC_IN[0]) + len(SCBHK_IN[0]) + len(SCBSG_IN[0]) + len(DBHK_IN[0]) + len(DBSHK_IN[0])
 
 goalopt = np.ones(goal1 ,dtype = np.int)
 
 goalListLevel1 = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
+goalListLevelIN = []
+goalListLevelIN.append(ANZ_IN[0])
+goalListLevelIN.append(CC_IN[0])
+goalListLevelIN.append(SCBHK_IN[0])
+goalListLevelIN.append(SCBSG_IN[0])
+goalListLevelIN.append(DBHK_IN[0])
+goalListLevelIN.append(DBSHK_IN[0])
+
+goalListLevelINLen = []
+goalListLevelINLen.append(len(ANZ_IN[0]))
+goalListLevelINLen.append(len(CC_IN[0]))
+goalListLevelINLen.append(len(SCBHK_IN[0]))
+goalListLevelINLen.append(len(SCBSG_IN[0]))
+goalListLevelINLen.append(len(DBHK_IN[0]))
+goalListLevelINLen.append(len(DBSHK_IN[0]))
 
 goalListLevel2 = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
 
@@ -147,19 +163,23 @@ print(res)
 # level 1 路径生成器
 # 每组要1个
 
-def generateAllNeedAdd():
-    # return np.arange(5, len(goalList), 1)
-    return np.arange(1, len(goalListLevel1) + 1 -5, 1)
+# def generateAllNeedAdd():
+#     # return np.arange(5, len(goalList), 1)
+#     return np.arange(1, len(goalListLevel1) + 1 -5, 1)
 # get
 
 
 def getMhs(mhindex = 0, level = 2):
-    return [1, 2, 3]
+    return goalListLevelIN[mhindex]
 
 def getMhAllValite(paths = [], needPart = 0):
     nodeLen = len(paths)
-    alldata = list(combinations(np.arange(1, len(paths) + 1), needPart))
     allValite = []
+    if needPart == 0 :
+        return
+    if nodeLen < needPart:
+        return
+    alldata = list(combinations(np.arange(1, len(paths) + 1), needPart))
     for node in alldata:
         tmpNode = np.zeros(nodeLen, dtype= int)
         for tmp in node:
@@ -168,19 +188,71 @@ def getMhAllValite(paths = [], needPart = 0):
     return allValite
 
 
-
 def descartes(firstdata = [], senddata = []):
     data = []
     for x in product(firstdata, senddata):
         data.append(list(x))
     return data
 
+def getAllTmp(mhDatas =[] , mh = []):
+    allNode = []
+    i = 0
+    for mhindex , mhlen in enumerate(goalListLevelINLen):
+        # if mhindex >= len(mh):
+        #     allNode.extend(np.zeros(mhlen, dtype=np.int))
+        #     continue
+        if i == len(mh):
+            allNode.extend(np.zeros(mhlen, dtype=np.int))
+            continue
+        if mhindex == mh[i]:
+            allNode.extend(mhDatas[i])
+            i = i +1
+        else:
+            allNode.extend(np.zeros(mhlen, dtype= np.int))
+    return allNode
+
+
+
+def filterAndCheckForOnePiece(data = [[[]]], mhs = []):
+    if type(data[0]).__name__ != "list":
+        return
+    dataRet = []
+    for eachindex, eamhs in enumerate(data):
+        if eachindex == 0:
+            dataRet = eamhs
+            continue
+        dataRet = descartes(dataRet, eamhs)
+
+    realData = []
+    for dataeach in dataRet:
+        tmp = dataeach
+        retData = []
+        if len(dataRet) == 1:
+            retData.append(dataeach)
+        if len(dataRet) == 2 :
+            retData.extend(dataeach)
+        for i in np.arange(0, len(mhs) - 2, 1):
+            retData.append(tmp[1])
+            tmp = tmp.pop(0)
+            if i == (len(mhs) - 3):
+                retData.append(tmp[1])
+                retData.append(tmp[0])
+        rightdata = []
+        for empData in retData:
+            rightdata.insert(0, empData)
+        realData.append(rightdata)
+    filterData = []
+    if len(realData) >0 :
+        for eachRealData in realData:
+            filterData.append(getAllTmp(eachRealData, mhs))
+    return filterData
+
 def filterAndCheck(data = [[[]]], mhs = []):
+    filterData = []
     dataRet = []
     for eachMhs in data:
         if len(data) == 1 :
-            dataRet = eachMhs
-            return dataRet
+            return filterData.append(getAllTmp(eachMhs, mhs))
         if len(list(dataRet)) == 0:
             dataRet = eachMhs
             continue
@@ -192,37 +264,57 @@ def filterAndCheck(data = [[[]]], mhs = []):
     for dataeach in dataRet:
         tmp = dataeach
         retData = []
-        for i in np.arange(0, len(mhs) -1, 1):
-            retData.append(tmp[1])
-            tmp = tmp.pop(0)
-            if type(tmp[0]).__name__ != 'list':
-                retData.append(tmp)
+        if type(tmp[0]).__name__ != 'list':
+            retData.append(tmp)
+        else:
+            for i in np.arange(0, len(mhs) -1, 1):
+                retData.append(tmp[1])
+                tmp = tmp.pop(0)
+                if type(tmp[0]).__name__ != 'list':
+                    retData.append(tmp)
         rightdata = []
         for empData in retData:
             rightdata.insert(0, empData)
         realData.append(rightdata)
-    return realData
 
-def getAllNeed(tmpNeedMhs = [[]], tmpPart = [], level = 2):
+    if len(realData) >0 :
+        for eachRealData in realData:
+            filterData.append(getAllTmp(eachRealData, mhs))
+    return filterData
+
+
+def getOnemhToPart(mhs = [], parts =[]):
+    allonemhs = []
+    for mhindex, mhdata in enumerate(mhs):
+        candaditePaths = getMhs(mhdata)
+        if len(candaditePaths) < parts[mhindex]:
+            return
+        allonemhs.append(getMhAllValite(candaditePaths, parts[mhindex]))
+    return allonemhs
+
+def getAllNeed(tmpNeedMhs = [[]], tmpPart = []):
     goodPath = []
     for needMhs in tmpNeedMhs:
-        i = 0
-        candidateAllTmp = []
-        goodones = []
-        for mh in needMhs:
-            candaditePaths = getMhs(mh, level)
-            candidateAllTmp.append(getMhAllValite(candaditePaths, tmpPart[i]))
-            if (len(candidateAllTmp) == len(needMhs)):
-                goodones = filterAndCheck(candidateAllTmp, needMhs)
-            i = i+1
-        goodPath.extend(goodones)
+        oneToPart = getOnemhToPart(needMhs, tmpPart)
+        if oneToPart != None :
+            goodones = filterAndCheckForOnePiece(oneToPart, needMhs)
+            goodPath.extend(goodones)
+        # for mh in needMhs:
+        #     candaditePaths = getMhs(mh)
+        #     if getMhAllValite(candaditePaths, tmpPart[i]) == [5555]:
+        #         break
+        #     candidateAllTmp.append(getMhAllValite(candaditePaths, tmpPart[i]))
+        #     i = i + 1
+        #     if ( i == len(tmpPart)) and candidateAllTmp!=[[]]:
+        #         goodones = filterAndCheck(candidateAllTmp, needMhs)
+        # goodPath.extend(goodones)
     return goodPath
 
 def getMhSize():
     return 6
 
 # add level 2, get at least nodes
-def add2isokGetLeastPaths(addNumber = 1, level1AllNodes = [x11]):
+def add2isokGetLeastPaths(addNumber = 1):
     if(addNumber <= 0 ):
         return []
 
@@ -243,6 +335,5 @@ def add2isokGetLeastPaths(addNumber = 1, level1AllNodes = [x11]):
 
 print(add2isokGetLeastPaths(1))
 
-
-
+# addlevel1 can rebalance
 
