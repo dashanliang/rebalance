@@ -70,12 +70,12 @@ class x12:
     value = 0.0
 
 # analysis all mh details
-ANZ_IN = [[x1, x12], [x2], [x3]]
+ANZ_IN = [[x1], [x2], [x3]]
 ANZ_OUT = [[x4, x5], [x8, x10], []]
 ANZ_BALANCE = 0
 
 CC_IN = [[x4], [], []]
-CC_OUT = [[x12], [], []]
+CC_OUT = [[], [], []]
 CC_BALANCE = 0
 
 SCBHK_IN = [[x5], [x6], []]
@@ -158,9 +158,9 @@ b = np.array([-20, -20, -20, 1000, -50, 500])
 
 print(b)
 print(goalopt)
-# res = optimize.linprog(goalopt, A_ub=-a, b_ub=b, bounds=((0.1, None), (0.1, None), (0.1, None), (0.1, None), (0.1, None)))
+res = optimize.linprog(goalopt, A_ub=-a, b_ub=b, bounds=((0.1, None), (0.1, None), (0.1, None), (0.1, None), (0.1, None)))
 
-# print(res)
+print(res)
 
 # 如果 level全集 加入可以 rebalance 从 1 1 1 1 1 1 开始 选取 最优
 # level 1 路径生成器
@@ -336,7 +336,7 @@ def add2isokGetLeastPaths(addNumber = 1):
 
     return tmpAll
 
-print(add2isokGetLeastPaths(2))
+print(add2isokGetLeastPaths(4))
 
 # addlevel1 can rebalance
 
