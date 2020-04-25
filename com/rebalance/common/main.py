@@ -45,16 +45,19 @@ tmpAllCandidate = []
 def generalItemsForEachLevel(level = 0, maxatleast = 0):
     leveldata = []
     allCandidata = []
-    if len(tmpAllCandidate) > 0:
-        for candidate in tmpAllCandidate:
-            allCandidata.insert(0, candidate)
+    # if len(tmpAllCandidate) > 0:
+    #     for candidate in tmpAllCandidate:
+    #         allCandidata.insert(0, candidate)
+    #
+    # data = generalLevelMaxSequenceAtLeast(level, maxatleast, allCandidata)
 
-    data = generalLevelMaxSequenceAtLeast(level, maxatleast, allCandidata)
-    for eachdata in data:
-        leveldata.append(eachdata[level])
+    tmpAllCandidate = []
+    data = generalLevelMaxSequenceAtLeast(level, maxatleast)
+    # for eachdata in data:
+    #     leveldata.append(eachdata)
 
-    tmpAllCandidate.insert(0, leveldata)
-    return leveldata
+    tmpAllCandidate.insert(0, data)
+    return tmpAllCandidate
 
 # check need level 2 / level 3 or not
 class x1:
@@ -126,6 +129,7 @@ goal1 = len(ANZ_IN[0]) + len(CC_IN[0]) + len(SCBHK_IN[0]) + len(SCBSG_IN[0]) + l
 goalopt = np.ones(goal1 ,dtype = np.int)
 
 goalListLevel1 = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
+print(len(goalListLevel1))
 goalListLevelIN = []
 goalListLevelIN.append(ANZ_IN[0])
 goalListLevelIN.append(CC_IN[0])
@@ -167,14 +171,17 @@ def linearCalcute(maxlevel = 0, goalalldata = []):
                            bounds=((0.1, None), (0.1, None), (0.1, None), (0.1, None), (0.1, None)))
 
     print(res)
-
-    return True
+    print(goalalldata)
+    return res.get("success")
 
 def canRebalanceOrNot(datas = [[]]):
     checkdate = []
     i = 0
     for data in datas:
-        checkdate.extend(data)
+        if type(data).__name__ != "int":
+            checkdate.extend(data)
+        else:
+            checkdate.append(data)
         i = i + 1
     # need add funtion to linear
     if i > 0:
@@ -225,25 +232,36 @@ def calculateTheHighPrority(datas = [[[]]]):
 
     return biasData
 
-print(calculateTheHighPrority([[[1,1,1,1,1,1]]]))
-def generalalldata():
+# print(calculateTheHighPrority([[[1,1,1,1,1,1]]]))
+def generalalldata(tmpAllCandidate = [[[]]]):
     allCandidata = []
     if len(tmpAllCandidate) > 0:
         for candidate in tmpAllCandidate:
             allCandidata.insert(0, candidate)
-    canBeSuccessdata = filterAndCheckForOnePiece(allCandidata)
+    if len(allCandidata) == 1:
+        canBeSuccessdata = allCandidata[0]
+    else:
+        canBeSuccessdata = filterAndCheckForOnePiece(allCandidata)
 #     filter one by one cal  and the 倾向性
     realCandidate = filterCanRebalance(canBeSuccessdata)
-    calBias = calculateTheHighPrority(realCandidate)
+    calBias = []
+    if len(realCandidate)>0:
+        calBias = calculateTheHighPrority(realCandidate)
 
 #     choice the best is well
     if calBias == []:
         return
-
+    print(realCandidate)
+    print(" best is : " , calBias)
     return np.argmax(calBias)
 
 print(checkLeastLevel())
-print(generalalldata())
+print(tmpAllCandidate)
+for i in np.arange(0, len(goalListLevelIN), 1):
+    best = generalalldata(generalItemsForEachLevel(0,i+1))
+    print(best)
+    if best != None:
+        break
 
 
 

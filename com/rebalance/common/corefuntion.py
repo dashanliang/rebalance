@@ -67,7 +67,7 @@ def generalProrityLevel(levelSum = 4):
     return prorityLevels
 
 def getLevelPathLen(indexmh = 0):
-    return 3
+    return 5
 
 def generalLevelMaxSequenceAtLeast(levelData = 0, atleastMaxLen = 1, otherData = []):
     maxIndexLevel = levelData
@@ -87,7 +87,7 @@ def generalLevelMaxSequenceAtLeast(levelData = 0, atleastMaxLen = 1, otherData =
     needGeneralData.extend(otherData)
     return filterAndCheckForOnePiece(needGeneralData)
 
-print(generalLevelMaxSequenceAtLeast(1, 0))
+print(generalLevelMaxSequenceAtLeast(0, 1))
 
 
 
