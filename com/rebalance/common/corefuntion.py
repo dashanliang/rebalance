@@ -87,7 +87,7 @@ def generalLevelMaxSequenceAtLeast(levelData = 0, atleastMaxLen = 1, otherData =
     needGeneralData.extend(otherData)
     return filterAndCheckForOnePiece(needGeneralData)
 
-print(generalLevelMaxSequenceAtLeast(0, 1))
+print(generalLevelMaxSequenceAtLeast(1, 0))
 
 
 

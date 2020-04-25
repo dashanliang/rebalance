@@ -178,10 +178,10 @@ def canRebalanceOrNot(datas = [[]]):
     checkdate = []
     i = 0
     for data in datas:
-        if type(data).__name__ != "int":
-            checkdate.extend(data)
-        else:
-            checkdate.append(data)
+        # if type(data).__name__ != "int":
+        #     checkdate.extend(data)
+        # else:
+        checkdate.extend(data)
         i = i + 1
     # need add funtion to linear
     if i > 0:
@@ -258,7 +258,7 @@ def generalalldata(tmpAllCandidate = [[[]]]):
 print(checkLeastLevel())
 print(tmpAllCandidate)
 for i in np.arange(0, len(goalListLevelIN), 1):
-    best = generalalldata(generalItemsForEachLevel(0,i+1))
+    best = generalalldata(generalItemsForEachLevel(1,0))
     print(best)
     if best != None:
         break
