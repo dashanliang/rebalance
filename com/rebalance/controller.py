@@ -2,7 +2,66 @@ from com.rebalance.common.main import *
 
 
 def calculateMaxLevel2():
-    return []
+    for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
+        best = generalalldata(generalItemsForEachLevel(2, i + 1), 2)
+        print(best)
+        if best != None:
+            tmpPaths = best
+            break
+
+    tmpcandiae2 = []
+    for paths in tmpPaths:
+        tmpcandiae2.append(paths[2:])
+
+    tmpAllCandidate = []
+    tmpAllCandidate.append(tmpcandiae2)
+
+    print(tmpAllCandidate)
+
+    for i in np.arange(0, np.sum(goalListLevelINLen1) + 1, 1):
+        tmpdata = []
+        tmpdata = generalItemsForEachLevel(1, i)
+        tmpdata.extend(tmpAllCandidate)
+        best = generalalldata(tmpdata, 2)
+        print(best)
+        if best != None:
+            tmpPaths = best
+            print("best is :", best)
+            break
+
+    tmpAllCandidateFor1 = []
+    for paths in tmpPaths:
+        ttmp1 = []
+        ttmp1.append(paths[1])
+        ttmp1.extend(paths[2])
+        tmpAllCandidateFor1.append(ttmp1)
+
+    print([tmpAllCandidateFor1])
+
+    for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
+        tmpdata = []
+        tmpdata = generalItemsForEachLevel(0, i)
+        tmpdata.extend([tmpAllCandidateFor1])
+        best = generalalldata(tmpdata, 2)
+        print(best)
+        if best != None:
+            tmpPaths = best
+            print("best is :", best)
+            break
+
+    forTmp2 = []
+
+    for paths in tmpPaths:
+        f2 = []
+        f2.append(paths[0])
+        f2.extend(paths[1])
+        forTmp2.append(f2)
+
+    print(forTmp2)
+    bestpath = calculateTheHighPrority(forTmp2)
+
+
+    return bestpath
 
 def calculateMaxLevel1():
     tmpPaths = []
