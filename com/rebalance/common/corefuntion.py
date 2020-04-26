@@ -58,6 +58,16 @@ def filterAndCheckForOnePiece(data = [[[]]]):
         realData.append(rightdata)
     return realData
 
+
+def filterAndCheckForTwoPiece(data = [[[]]]):
+    dataRet = []
+    lenData = len(data)
+    for eachindex, eamhs in enumerate(data):
+        if eachindex == 0:
+            dataRet = eamhs
+            continue
+        dataRet = descartes(dataRet, eamhs)
+    return dataRet
 # print(filterAndCheckForOnePiece([generalListSequence(5, 1)]))
 
 def generalProrityLevel(levelSum = 4):
@@ -85,9 +95,12 @@ def generalLevelMaxSequenceAtLeast(levelData = 0, atleastMaxLen = 1, otherData =
        needGeneralData.append(lowleveldata)
     needGeneralData.append(highleveldata)
     needGeneralData.extend(otherData)
+
+    if len(otherData)>0:
+        return filterAndCheckForTwoPiece(needGeneralData)
     return filterAndCheckForOnePiece(needGeneralData)
 
-print(generalLevelMaxSequenceAtLeast(1, 0))
-
-
+# print(generalLevelMaxSequenceAtLeast(2, 1, [[[[1,2]]]]))
+print(generalLevelMaxSequenceAtLeast(0, 0, [[[[1,2]], [[3, 4]]]]))
+# print(generalLevelMaxSequenceAtLeast(0,0))
 
