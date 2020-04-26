@@ -186,11 +186,11 @@ class x12:
 
 # analysis all mh details
 ANZ_IN = [[x1], [x2], [x3]]
-ANZ_OUT = [[x5], [x4, x8, x10], []]
+ANZ_OUT = [[x5], [x8, x10], []]
 ANZ_BALANCE = 0
 ANZ_NEED = 20
 
-CC_IN = [[], [x4], []]
+CC_IN = [[x4], [], []]
 CC_OUT = [[], [], []]
 CC_BALANCE = 0
 CC_NEED = 20

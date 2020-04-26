@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89614635-f605-4117-8b32-df9d5eae0ffc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/com/rebalance/common/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="89614635-f605-4117-8b32-df9d5eae0ffc" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/rebalance/common/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="459" column="30" selection-start-line="459" selection-start-column="30" selection-end-line="459" selection-end-column="30" />
+            <state relative-caret-position="413">
+              <caret line="451" selection-start-line="451" selection-end-line="451" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -340,7 +338,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-565" width="1920" height="1057" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18477103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -430,6 +427,11 @@
           <url>file://$PROJECT_DIR$/com/rebalance/common/corefuntion.py</url>
           <line>29</line>
           <option name="timeStamp" value="248" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/main.py</url>
+          <line>451</line>
+          <option name="timeStamp" value="286" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -589,8 +591,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/rebalance/common/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="459" column="30" selection-start-line="459" selection-start-column="30" selection-end-line="459" selection-end-column="30" />
+        <state relative-caret-position="413">
+          <caret line="451" selection-start-line="451" selection-end-line="451" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
