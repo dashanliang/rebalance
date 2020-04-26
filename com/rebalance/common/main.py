@@ -186,11 +186,11 @@ class x12:
 
 # analysis all mh details
 ANZ_IN = [[x1], [x2], [x3]]
-ANZ_OUT = [[x5], [x8, x10], [x4]]
+ANZ_OUT = [[x5], [x4, x8, x10], []]
 ANZ_BALANCE = 0
 ANZ_NEED = 20
 
-CC_IN = [[], [], [x4]]
+CC_IN = [[], [x4], []]
 CC_OUT = [[], [], []]
 CC_BALANCE = 0
 CC_NEED = 20
@@ -438,6 +438,16 @@ for paths in  tmpPaths:
 
 print(tmpAllCandidate)
 
+for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
+    tmpdata = []
+    tmpdata = generalItemsForEachLevel(0,i)
+    tmpdata.extend(tmpAllCandidate)
+    best = generalalldata(tmpdata, 1)
+    print(best)
+    if best != None:
+        tmpPaths = best
+        print("best is :", best)
+        break
 
 for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
     best = generalalldata(generalItemsForEachLevel(2,i+1), 2)
