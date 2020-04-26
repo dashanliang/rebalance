@@ -499,4 +499,4 @@ for paths in tmpPaths:
     forTmp2.append(f2)
 
 print(forTmp2)
-print(calculateTheHighPrority(forTmp2))
+print("路径优先偏向", calculateTheHighPrority(forTmp2))
