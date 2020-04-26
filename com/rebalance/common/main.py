@@ -179,11 +179,11 @@ class x12:
 
 # analysis all mh details
 ANZ_IN = [[x1], [x2], [x3]]
-ANZ_OUT = [[x4, x5], [x8, x10], []]
+ANZ_OUT = [[x5], [x4, x8, x10], []]
 ANZ_BALANCE = 0
 ANZ_NEED = 20
 
-CC_IN = [[x4], [], []]
+CC_IN = [[], [x4], []]
 CC_OUT = [[], [], []]
 CC_BALANCE = 0
 CC_NEED = 20
@@ -271,7 +271,7 @@ def linearCalcute(maxlevel = 0, goalalldata = []):
 
         dbhk = getinequality(DBHK_IN[0] + DBHK_IN[1], DBHK_OUT[0] + DBHK_OUT[1], goalListLevel1 + goalListLevel2)
 
-        dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1], DBSHK_OUT[0], goalListLevel1 + goalListLevel2)
+        dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1], DBSHK_OUT[0] + DBSHK_OUT[1], goalListLevel1 + goalListLevel2)
 
     a = np.array([np.multiply(anz, goalalldata), np.multiply(cc, goalalldata),
                   np.multiply(scbhk, goalalldata), np.multiply(scbsg, goalalldata),
@@ -285,8 +285,12 @@ def linearCalcute(maxlevel = 0, goalalldata = []):
                   DBSHK_BALANCE-DBSHK_NEED])
 
     print(b)
-    res = optimize.linprog(goalopt, A_ub=-a, b_ub=b,
-                           bounds=((0.1, None), (0.1, None), (0.1, None), (0.1, None), (0.1, None)))
+    boundsList = []
+    for i in goalalldata:
+        boundsList.append((0.1, None))
+
+    res = optimize.linprog(goalalldata, A_ub=-a, b_ub=b,
+                           bounds=tuple(boundsList))
 
     print(res)
     print(goalalldata)
@@ -374,14 +378,13 @@ def generalalldata(tmpAllCandidate = [[[]]]):
     return np.argmax(calBias)
 
 print(checkLeastLevel())
-print(tmpAllCandidate)
-for i in np.arange(0, len(goalListLevelIN), 1):
-    best = generalalldata(generalItemsForEachLevel(0,i+1))
-    print(best)
-    if best != None:
-        break
+# print(tmpAllCandidate)
+# for i in np.arange(0, len(goalListLevelIN), 1):
+#     best = generalalldata(generalItemsForEachLevel(0,i+1))
+#     print(best)
+#     if best != None:
+#         break
 
-def controllGenenral():
-    needMaxLevel = checkLeastLevel()
+# needMaxLevel = checkLeastLevel()
 
 
