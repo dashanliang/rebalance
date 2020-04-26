@@ -6,7 +6,6 @@ import numpy as np
 from scipy import optimize
 from itertools import product
 
-MaxLevel = 3
 
 def getlevelLen(i):
     if i == 0:
@@ -34,7 +33,7 @@ def getinequality(in_data = [], out_data = [], allNode = []):
 def checkoptimizeisok(level = 0, allNodes = []):
     return linearCalcute(level, allNodes)
 
-def checkLeastLevel():
+def checkLeastLevel(MaxLevel = 3):
     sumLen = 0
     for i in np.arange(0, MaxLevel, 1):
         sumLen = sumLen + getlevelLen(i)
@@ -99,12 +98,6 @@ def generalListSequence(lenAll = 0, lenNeed = 0):
             eachAllNode[indeNode] = 1
         retData.append(eachAllNode)
     return retData
-
-def getLevelPathLen(indexmh = 0):
-    if indexmh == 0:
-        return len(goalListLevel1)
-    return len(goalListLevel2)
-
 
 def filterAndCheckForTwoPiece(data = [[[]]]):
     dataRet = []
