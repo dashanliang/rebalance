@@ -123,3 +123,4 @@ def controllerMaxLevel(maxLevel = 0):
     if atleastLevel >= 2:
         return calculateMaxLevel2()
 
+print(controllerMaxLevel(3))
