@@ -358,8 +358,13 @@ def filterCanRebalance(needchecklevel = 0, candidates= [[[]]]):
     return realResult
 
 def getmhlen(level = 1):
-    datamh = goalListLevelINLen
-    return datamh
+    if level == 0 :
+        return goalListLevelINLen
+    if level == 1 :
+        return goalListLevelINLen1
+    if level == 2:
+        return goalListLevelINLen2
+    return None
 
 def calnodedata(level = 0, node = []):
     datatmp = []
@@ -385,7 +390,7 @@ def calculateTheHighPrority(datas = [[[]]]):
     for data in datas:
         tmpdata = []
         for level, node in enumerate(data):
-            if tmpdata == [] :
+            if len(tmpdata) == 0 :
                 tmpdata = calnodedata(level, node)
                 continue
             tmpdata = np.add(tmpdata, calnodedata(level, node))
@@ -456,10 +461,42 @@ print(tmpAllCandidate)
 for i in np.arange(0, np.sum(goalListLevelINLen1) + 1, 1):
     tmpdata = []
     tmpdata = generalItemsForEachLevel(1,i)
-    tmpdata.extend(tmpAllCandidate),
+    tmpdata.extend(tmpAllCandidate)
     best = generalalldata(tmpdata, 2)
     print(best)
     if best != None:
         tmpPaths = best
         print("best is :", best)
         break
+
+tmpAllCandidateFor1 = []
+for paths in tmpPaths:
+    ttmp1 = []
+    ttmp1.append(paths[1])
+    ttmp1.extend(paths[2])
+    tmpAllCandidateFor1.append(ttmp1)
+
+print([tmpAllCandidateFor1])
+
+
+for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
+    tmpdata = []
+    tmpdata = generalItemsForEachLevel(0,i)
+    tmpdata.extend([tmpAllCandidateFor1])
+    best = generalalldata(tmpdata, 2)
+    print(best)
+    if best != None:
+        tmpPaths = best
+        print("best is :", best)
+        break
+
+forTmp2 = []
+
+for paths in tmpPaths:
+    f2 = []
+    f2.append(paths[0])
+    f2.extend(paths[1])
+    forTmp2.append(f2)
+
+print(forTmp2)
+print(calculateTheHighPrority(forTmp2))

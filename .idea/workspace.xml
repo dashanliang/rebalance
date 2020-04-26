@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="89614635-f605-4117-8b32-df9d5eae0ffc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/rebalance/common/corefuntion.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/corefuntion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/rebalance/common/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/rebalance/common/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="444" column="51" lean-forward="true" selection-start-line="444" selection-start-column="26" selection-end-line="444" selection-end-column="58" />
+            <state relative-caret-position="180">
+              <caret line="370" column="28" lean-forward="true" selection-start-line="370" selection-start-column="13" selection-end-line="370" selection-end-column="29" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -434,28 +433,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/main.py</url>
-          <line>459</line>
-          <option name="timeStamp" value="249" />
+          <line>397</line>
+          <option name="timeStamp" value="275" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/main.py</url>
-          <line>460</line>
-          <option name="timeStamp" value="258" />
+          <line>390</line>
+          <option name="timeStamp" value="276" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/main.py</url>
-          <line>462</line>
-          <option name="timeStamp" value="259" />
+          <line>393</line>
+          <option name="timeStamp" value="277" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/main.py</url>
-          <line>450</line>
-          <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/main.py</url>
-          <line>444</line>
-          <option name="timeStamp" value="268" />
+          <line>370</line>
+          <option name="timeStamp" value="278" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -470,12 +464,32 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>generalItemsForEachLevel(2,i+1)</expression-string>
+        <expression-string>getmhlen(level)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>checkLeastLevel()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>generalItemsForEachLevel(2,1)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
         <expression-string>goalalldata</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>generalalldata(generalItemsForEachLevel(2,i+1), 2)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>generalItemsForEachLevel(2,i+1)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -493,27 +507,6 @@
       </expression>
       <expression>
         <expression-string>getinequality(SCBHK_IN[0]+ SCBHK_IN[1] + SCBHK_IN[2], SCBHK_OUT[0] + SCBHK_OUT[1] + SCBHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>getinequality(CC_IN[0] + CC_IN[1] + CC_IN[2], CC_OUT[0] + CC_OUT[1] + CC_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[1], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>optimize.linprog(goalalldata, A_ub=-a, b_ub=b,
-                           bounds=tuple(boundsList))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>generalItemsForEachLevel(0,i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -611,8 +604,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/rebalance/common/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="444" column="51" lean-forward="true" selection-start-line="444" selection-start-column="26" selection-end-line="444" selection-end-column="58" />
+        <state relative-caret-position="180">
+          <caret line="370" column="28" lean-forward="true" selection-start-line="370" selection-start-column="13" selection-end-line="370" selection-end-column="29" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
