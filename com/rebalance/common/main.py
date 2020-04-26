@@ -186,11 +186,11 @@ class x12:
 
 # analysis all mh details
 ANZ_IN = [[x1], [x2], [x3]]
-ANZ_OUT = [[x5], [x8, x10], []]
+ANZ_OUT = [[x5], [x4, x8, x10], []]
 ANZ_BALANCE = 0
 ANZ_NEED = 20
 
-CC_IN = [[x4], [], []]
+CC_IN = [[], [x4], []]
 CC_OUT = [[], [], []]
 CC_BALANCE = 0
 CC_NEED = 20
@@ -433,8 +433,10 @@ for i in np.arange(0, np.sum(goalListLevelINLen1), 1):
 
 # 获取可以 high levels paths
 tmpAllCandidate = []
+tmpcandiae = []
 for paths in  tmpPaths:
-    tmpAllCandidate.append([paths[1:]])
+    tmpcandiae.append(paths[1:])
+tmpAllCandidate.append(tmpcandiae)
 
 print(tmpAllCandidate)
 
@@ -449,6 +451,16 @@ for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
         print("best is :", best)
         break
 
+forTmp1 = []
+
+for paths in tmpPaths:
+    f1 = []
+    f1.append(paths[0])
+    f1.extend(paths[1])
+    forTmp1.append(f1)
+
+print(forTmp1)
+
 for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
     best = generalalldata(generalItemsForEachLevel(2,i+1), 2)
     print(best)
@@ -456,8 +468,12 @@ for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
         tmpPaths = best
         break
 
+tmpcandiae2 = []
 for paths in  tmpPaths:
-    tmpAllCandidate.append([paths[2:]])
+    tmpcandiae2.append(paths[2:])
+
+tmpAllCandidate = []
+tmpAllCandidate.append(tmpcandiae2)
 
 print(tmpAllCandidate)
 

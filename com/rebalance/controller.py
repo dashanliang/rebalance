@@ -13,8 +13,10 @@ def calculateMaxLevel1():
             tmpPaths = best
             break
     tmpAllCandidate = []
+    tmpcandiae = []
     for paths in tmpPaths:
-        tmpAllCandidate.append([paths[1:]])
+        tmpcandiae.append(paths[1:])
+    tmpAllCandidate.append(tmpcandiae)
 
     print(tmpAllCandidate)
 
@@ -28,16 +30,26 @@ def calculateMaxLevel1():
             tmpPaths = best
             print("best is :", best)
             break
-    return []
+
+    forTmp1 = []
+    for paths in tmpPaths:
+        f1 = []
+        f1.append(paths[0])
+        f1.extend(paths[1])
+        forTmp1.append(f1)
+
+    bestPath = calculateTheHighPrority(forTmp1)
+    return bestPath
 
 def calculateMaxLevel0(level = 0):
-    best = [[]]
+    best = []
     for i in np.arange(0, np.sum(goalListLevelINLen), 1):
         best = generalalldata(generalItemsForEachLevel(level, i + 1))
         print(best)
         if best != None:
             break
-    return best[0]
+    bestPath = calculateTheHighPrority(best)
+    return bestPath
 
 def controllerMaxLevel(maxLevel = 0):
     atleastLevel = checkLeastLevel(maxLevel)
