@@ -25,7 +25,7 @@ def datatoclassMhdata(d):
 
 
 testdata = '{\"fromMh\": \"a\", \"toMh\": \"b\", \"level\":\"0\"};{\"fromMh\": \"c\", \"toMh\": \"a\", \"level\":\"0\"}'
-testmhdata = '{\"mhName\": \"a\", \"balance\": 50, \"need\": 100};{\"mhName\": \"b\", \"balance\": 100, \"need\": 0}'
+testmhdata = '{\"mhName\": \"a\", \"balance\": 50, \"need\": 100};{\"mhName\": \"b\", \"balance\": 100, \"need\": 0};{\"mhName\": \"c\", \"balance\": 100, \"need\": 0}'
 
 mhdatas = []
 mhnames = []
@@ -65,17 +65,8 @@ print(mhnames)
 levelmax(2)
 print(mhoutdata)
 
-
-def setdata(level = 0, frommh = "", tomh = "", markdata = ""):
-    mhindex = 0
-    for indexna, name in enumerate(mhnames):
-        if name == frommh:
-            mhindex = indexna
-    list(list(mhoutdata[level])[mhindex]).append(markdata)
-    return None
-
-
-def setdata(level = 0, frommh = "", tomh = "", markdata = ""):
+def setdata(level = 0, frommh = "", tomh = "", markdata = "",  allindata = [[[]]], alloutdata = [[[]]]):
+    tpdata = []
     mhoutindex = 0
     for indexout, name in enumerate(mhnames):
         if name == frommh:
@@ -85,21 +76,27 @@ def setdata(level = 0, frommh = "", tomh = "", markdata = ""):
     for indexin, name in enumerate(mhnames):
         if name == tomh:
             mhinindex = indexin
-    list(list(mhoutdata[level])[mhoutindex]).append(markdata)
-    list(list(mhindata[level])[mhinindex]).append(markdata)
+    alloutdata[level][mhoutindex].append(markdata)
+    allindata[level][mhinindex].append(markdata)
     return None
 
-def getdataOut(data = testdata):
+def getdataOut(data = testdata, allindata = [[[]]], alloutdata = [[[]]]):
+    i = 0
+    tmpin = allindata
+    tmpout = alloutdata
     for eachnode in data.split(";"):
         nodeclass = json.loads(eachnode, object_hook =datatoclassData)
         level = nodeclass.level
         frommh = nodeclass.fromMh
         toMh = nodeclass.toMh
-        iduu = uuid.uuid1()
-        setdata(level, frommh, toMh, iduu)
+        iduu = i
+        setdata(level, frommh, toMh, iduu, allindata, alloutdata)
         markdata.append(iduu)
+        i = i + 1
     return None
 
+getdataOut(allindata= mhindata, alloutdata= mhoutdata)
+print(mhindata)
 
 
 
