@@ -300,7 +300,7 @@ def linearCalcute(maxlevel = 0, goalalldata = []):
         dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1], DBSHK_OUT[0] + DBSHK_OUT[1], goalListLevel1 + goalListLevel2)
 
     if maxlevel == 2:
-        anz = getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[1], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+        anz = getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[2], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
 
         cc = getinequality(CC_IN[0] + CC_IN[1] + CC_IN[2], CC_OUT[0] + CC_OUT[1] + CC_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
 

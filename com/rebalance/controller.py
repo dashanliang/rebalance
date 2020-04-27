@@ -129,4 +129,10 @@ def controllerMaxLevel(maxLevel = 0):
     if atleastLevel >= 2:
         return calculateMaxLevel2()
 
-print(controllerMaxLevel(3))
+dataaa = []
+dataaa = controllerMaxLevel(3)
+
+tmdat = []
+for daa in dataaa:
+   tmdat.extend(daa)
+checkoptimizeisok(2, tmdat)
