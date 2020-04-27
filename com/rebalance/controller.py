@@ -60,8 +60,9 @@ def calculateMaxLevel2():
     print(forTmp2)
     bestpath = calculateTheHighPrority(forTmp2)
 
-
-    return bestpath
+    bestBios = np.argmax(bestpath)
+    print(bestBios)
+    return forTmp2[bestBios]
 
 def calculateMaxLevel1():
     tmpPaths = []
