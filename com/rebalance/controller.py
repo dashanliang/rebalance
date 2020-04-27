@@ -97,6 +97,7 @@ def calculateMaxLevel1():
         f1.extend(paths[1])
         forTmp1.append(f1)
 
+    print(forTmp1)
     bestPath = calculateTheHighPrority(forTmp1)
     return bestPath
 

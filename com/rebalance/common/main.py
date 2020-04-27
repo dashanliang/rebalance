@@ -184,34 +184,37 @@ class x11:
 class x12:
     value = 0.0
 
+class x13:
+    value = 0.0
+
 # analysis all mh details
-ANZ_IN = [[x1], [x2], [x3]]
-ANZ_OUT = [[x4,x5], [x8, x10], []]
+ANZ_OUT = [[x1], [x2], [x3]]
+ANZ_IN = [[x4,x5], [x9, x8], []]
 ANZ_BALANCE = 0
 ANZ_NEED = 20
 
-CC_IN = [[x4], [], []]
-CC_OUT = [[], [], []]
+CC_OUT = [[x4], [], []]
+CC_IN = [[], [x10], []]
 CC_BALANCE = 0
 CC_NEED = 20
 
-SCBHK_IN = [[x5], [x6], []]
-SCBHK_OUT = [[x7], [], [x3]]
+SCBHK_OUT = [[x5], [x6], []]
+SCBHK_IN = [[x7], [], [x3]]
 SCBHK_BALANCE = 0
 SCBHK_NEED = 20
 
-SCBSG_IN = [[x7], [x8], []]
-SCBSG_OUT = [[x1], [x6], []]
+SCBSG_OUT = [[x7], [x8], []]
+SCBSG_IN = [[x1], [x6], []]
 SCBSG_BALANCE = 1000
 SCBSG_NEED = 0
 
-DBHK_IN = [[x9], [x10], []]
-DBHK_OUT = [[], [], []]
+DBHK_OUT = [[], [x9, x10], []]
+DBHK_IN = [[], [], []]
 DBHK_BALANCE = 0
 DBHK_NEED = 50
 
-DBSHK_IN = [[], [], []]
-DBSHK_OUT = [[x9], [x2], []]
+DBSHK_OUT = [[], [], []]
+DBSHK_IN = [[], [x2], []]
 DBSHK_BALANCE = 500
 DBSHK_NEED = 0
 
@@ -323,9 +326,9 @@ def linearCalcute(maxlevel = 0, goalalldata = []):
     print(b)
     boundsList = []
     for i in goalalldata:
-        boundsList.append((0.1, None))
+        boundsList.append((0, None))
 
-    res = optimize.linprog(goalalldata, A_ub=-a, b_ub=b,
+    res = optimize.linprog(goalalldata, A_ub=a, b_ub=b,
                            bounds=tuple(boundsList))
 
     print(res)
@@ -414,108 +417,108 @@ def generalalldata(tmpAllCandidate = [[[]]], needchecklevel = 0):
     # print(" best is : " , calBias)
     return realCandidate
 
-print(checkLeastLevel())
-for i in np.arange(0, np.sum(goalListLevelINLen), 1):
-    best = generalalldata(generalItemsForEachLevel(0,i+1))
-    print(best)
-    if best != None:
-        break
-
-# needMaxLevel = checkLeastLevel()
-
-tmpPaths = []
-for i in np.arange(0, np.sum(goalListLevelINLen1), 1):
-    best = generalalldata(generalItemsForEachLevel(1,i+1), 1)
-    print(best)
-    if best != None:
-        tmpPaths = best
-        break
-
-# 获取可以 high levels paths
-tmpAllCandidate = []
-tmpcandiae = []
-for paths in  tmpPaths:
-    tmpcandiae.append(paths[1:])
-tmpAllCandidate.append(tmpcandiae)
-
-print(tmpAllCandidate)
-
-for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
-    tmpdata = []
-    tmpdata = generalItemsForEachLevel(0,i)
-    tmpdata.extend(tmpAllCandidate)
-    best = generalalldata(tmpdata, 1)
-    print(best)
-    if best != None:
-        tmpPaths = best
-        print("best is :", best)
-        break
-
-forTmp1 = []
-
-for paths in tmpPaths:
-    f1 = []
-    f1.append(paths[0])
-    f1.extend(paths[1])
-    forTmp1.append(f1)
-
-print(forTmp1)
-
-for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
-    best = generalalldata(generalItemsForEachLevel(2,i+1), 2)
-    print(best)
-    if best != None:
-        tmpPaths = best
-        break
-
-tmpcandiae2 = []
-for paths in  tmpPaths:
-    tmpcandiae2.append(paths[2:])
-
-tmpAllCandidate = []
-tmpAllCandidate.append(tmpcandiae2)
-
-print(tmpAllCandidate)
-
-for i in np.arange(0, np.sum(goalListLevelINLen1) + 1, 1):
-    tmpdata = []
-    tmpdata = generalItemsForEachLevel(1,i)
-    tmpdata.extend(tmpAllCandidate)
-    best = generalalldata(tmpdata, 2)
-    print(best)
-    if best != None:
-        tmpPaths = best
-        print("best is :", best)
-        break
-
-tmpAllCandidateFor1 = []
-for paths in tmpPaths:
-    ttmp1 = []
-    ttmp1.append(paths[1])
-    ttmp1.extend(paths[2])
-    tmpAllCandidateFor1.append(ttmp1)
-
-print([tmpAllCandidateFor1])
-
-
-for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
-    tmpdata = []
-    tmpdata = generalItemsForEachLevel(0,i)
-    tmpdata.extend([tmpAllCandidateFor1])
-    best = generalalldata(tmpdata, 2)
-    print(best)
-    if best != None:
-        tmpPaths = best
-        print("best is :", best)
-        break
-
-forTmp2 = []
-
-for paths in tmpPaths:
-    f2 = []
-    f2.append(paths[0])
-    f2.extend(paths[1])
-    forTmp2.append(f2)
-
-print(forTmp2)
-print("路径优先偏向", calculateTheHighPrority(forTmp2))
+# print(checkLeastLevel())
+# for i in np.arange(0, np.sum(goalListLevelINLen), 1):
+#     best = generalalldata(generalItemsForEachLevel(0,i+1))
+#     print(best)
+#     if best != None:
+#         break
+#
+# # needMaxLevel = checkLeastLevel()
+#
+# tmpPaths = []
+# for i in np.arange(0, np.sum(goalListLevelINLen1), 1):
+#     best = generalalldata(generalItemsForEachLevel(1,i+1), 1)
+#     print(best)
+#     if best != None:
+#         tmpPaths = best
+#         break
+#
+# # 获取可以 high levels paths
+# tmpAllCandidate = []
+# tmpcandiae = []
+# for paths in  tmpPaths:
+#     tmpcandiae.append(paths[1:])
+# tmpAllCandidate.append(tmpcandiae)
+#
+# print(tmpAllCandidate)
+#
+# for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
+#     tmpdata = []
+#     tmpdata = generalItemsForEachLevel(0,i)
+#     tmpdata.extend(tmpAllCandidate)
+#     best = generalalldata(tmpdata, 1)
+#     print(best)
+#     if best != None:
+#         tmpPaths = best
+#         print("best is :", best)
+#         break
+#
+# forTmp1 = []
+#
+# for paths in tmpPaths:
+#     f1 = []
+#     f1.append(paths[0])
+#     f1.extend(paths[1])
+#     forTmp1.append(f1)
+#
+# print(forTmp1)
+#
+# for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
+#     best = generalalldata(generalItemsForEachLevel(2,i+1), 2)
+#     print(best)
+#     if best != None:
+#         tmpPaths = best
+#         break
+#
+# tmpcandiae2 = []
+# for paths in  tmpPaths:
+#     tmpcandiae2.append(paths[2:])
+#
+# tmpAllCandidate = []
+# tmpAllCandidate.append(tmpcandiae2)
+#
+# print(tmpAllCandidate)
+#
+# for i in np.arange(0, np.sum(goalListLevelINLen1) + 1, 1):
+#     tmpdata = []
+#     tmpdata = generalItemsForEachLevel(1,i)
+#     tmpdata.extend(tmpAllCandidate)
+#     best = generalalldata(tmpdata, 2)
+#     print(best)
+#     if best != None:
+#         tmpPaths = best
+#         print("best is :", best)
+#         break
+#
+# tmpAllCandidateFor1 = []
+# for paths in tmpPaths:
+#     ttmp1 = []
+#     ttmp1.append(paths[1])
+#     ttmp1.extend(paths[2])
+#     tmpAllCandidateFor1.append(ttmp1)
+#
+# print([tmpAllCandidateFor1])
+#
+#
+# for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
+#     tmpdata = []
+#     tmpdata = generalItemsForEachLevel(0,i)
+#     tmpdata.extend([tmpAllCandidateFor1])
+#     best = generalalldata(tmpdata, 2)
+#     print(best)
+#     if best != None:
+#         tmpPaths = best
+#         print("best is :", best)
+#         break
+#
+# forTmp2 = []
+#
+# for paths in tmpPaths:
+#     f2 = []
+#     f2.append(paths[0])
+#     f2.extend(paths[1])
+#     forTmp2.append(f2)
+#
+# print(forTmp2)
+# print("路径优先偏向", calculateTheHighPrority(forTmp2))
