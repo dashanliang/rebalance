@@ -5,7 +5,7 @@ from itertools import product
 import numpy as np
 from scipy import optimize
 from itertools import product
-
+from com.rebalance.common.globaldata import *
 
 def getlevelLen(i):
     if i == 0:
@@ -25,6 +25,22 @@ def getinequality(in_data = [], out_data = [], allNode = []):
     for mh in out_data :
         for index, mh_node in enumerate(allNode):
             if mh.__name__ == mh_node.__name__ :
+                inequalityData[index] = -1
+                break
+
+    return inequalityData
+
+def getinequalityForReal(in_data = [], out_data = [], allNode = []):
+    inequalityData = np.zeros(len(allNode), dtype= np.int)
+    for mh in in_data :
+        for index, mh_node in enumerate(allNode):
+            if mh == mh_node :
+                inequalityData[index] = 1
+                break
+
+    for mh in out_data :
+        for index, mh_node in enumerate(allNode):
+            if mh == mh_node :
                 inequalityData[index] = -1
                 break
 
@@ -273,6 +289,97 @@ goalListLevelINLen2.append(len(SCBSG_IN[2]))
 goalListLevelINLen2.append(len(DBHK_IN[2]))
 goalListLevelINLen2.append(len(DBSHK_IN[2]))
 
+
+
+def linearCalcuteForReal(maxlevel = 0, goalalldata = []):
+    # anz = getinequality(ANZ_IN[0], ANZ_OUT[0], goalListLevel1)
+    #
+    # cc = getinequality(CC_IN[0], CC_OUT[0], goalListLevel1)
+    #
+    # scbhk = getinequality(SCBHK_IN[0], SCBHK_OUT[0], goalListLevel1)
+    #
+    # scbsg = getinequality(SCBSG_IN[0], SCBSG_OUT[0], goalListLevel1)
+    #
+    # dbhk = getinequality(DBHK_IN[0], DBHK_OUT[0], goalListLevel1)
+    #
+    # dbshk = getinequality(DBSHK_IN[0], DBSHK_OUT[0], goalListLevel1)
+    #
+    # if maxlevel == 1:
+    #     anz = getinequality(ANZ_IN[0] + ANZ_IN[1], ANZ_OUT[0] + ANZ_OUT[1], goalListLevel1 + goalListLevel2)
+    #
+    #     cc = getinequality(CC_IN[0] + CC_IN[1], CC_OUT[0] + CC_OUT[1], goalListLevel1 + goalListLevel2)
+    #
+    #     scbhk = getinequality(SCBHK_IN[0]+ SCBHK_IN[1], SCBHK_OUT[0] + SCBHK_OUT[1], goalListLevel1 + goalListLevel2)
+    #
+    #     scbsg = getinequality(SCBSG_IN[0] + SCBSG_IN[1], SCBSG_OUT[0] + SCBSG_OUT[1], goalListLevel1 + goalListLevel2)
+    #
+    #     dbhk = getinequality(DBHK_IN[0] + DBHK_IN[1], DBHK_OUT[0] + DBHK_OUT[1], goalListLevel1 + goalListLevel2)
+    #
+    #     dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1], DBSHK_OUT[0] + DBSHK_OUT[1], goalListLevel1 + goalListLevel2)
+    #
+    # if maxlevel == 2:
+    #     anz = getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[2], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+    #
+    #     cc = getinequality(CC_IN[0] + CC_IN[1] + CC_IN[2], CC_OUT[0] + CC_OUT[1] + CC_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+    #
+    #     scbhk = getinequality(SCBHK_IN[0]+ SCBHK_IN[1] + SCBHK_IN[2], SCBHK_OUT[0] + SCBHK_OUT[1] + SCBHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+    #
+    #     scbsg = getinequality(SCBSG_IN[0] + SCBSG_IN[1] + SCBSG_IN[2], SCBSG_OUT[0] + SCBSG_OUT[1] + SCBSG_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+    #
+    #     dbhk = getinequality(DBHK_IN[0] + DBHK_IN[1] + DBHK_IN[2], DBHK_OUT[0] + DBHK_OUT[1] + DBHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+    #
+    #     dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1] + DBSHK_IN[2], DBSHK_OUT[0] + DBSHK_OUT[1] + DBSHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+
+    metric = []
+    goalalldata1 = []
+    if maxlevel >= 0:
+        for data in (mhoutdata[0]):
+            goalalldata1  = goalalldata1 + data
+
+    if maxlevel == 0:
+        for i, data in enumerate(mhoutdata[0]):
+            metric.append(np.multiply(getinequalityForReal(data, mhindata[0][i], goalalldata1), goalalldata))
+
+    if maxlevel >= 1:
+        for data in (mhoutdata[1]):
+            goalalldata1 = goalalldata1 + data
+
+    if maxlevel == 1:
+        for i, data in enumerate(mhoutdata[1]):
+            metric.append(np.multiply(getinequalityForReal(mhoutdata[0][i] + data, mhindata[0][i] + mhindata[1][i], goalalldata1), goalalldata))
+
+    if maxlevel >= 2:
+        for data in (mhoutdata[2]):
+            goalalldata1 = goalalldata1 + data
+
+    if maxlevel == 2:
+        for i, data in enumerate(mhoutdata[2]):
+            metric.append(np.multiply(getinequalityForReal(mhoutdata[0][i] + mhoutdata[1][i] + data, mhindata[0][i] + mhindata[1][i] + mhindata[2][i], goalalldata1), goalalldata))
+
+
+    a = np.array(metric)
+
+    print(a)
+    b = np.array([ANZ_BALANCE-ANZ_NEED,
+                  CC_BALANCE-CC_NEED,
+                 SCBHK_BALANCE-SCBHK_NEED,
+                 SCBSG_BALANCE-SCBSG_NEED,
+                 DBHK_BALANCE-DBHK_NEED,
+                  DBSHK_BALANCE-DBSHK_NEED])
+
+    print(b)
+    boundsList = []
+    for i in goalalldata:
+        boundsList.append((0, None))
+
+    res = optimize.linprog(goalalldata, A_ub=a, b_ub=b,
+                           bounds=tuple(boundsList))
+
+    print(res)
+    print(goalalldata)
+    return res.get("success")
+
+
 def linearCalcute(maxlevel = 0, goalalldata = []):
     anz = getinequality(ANZ_IN[0], ANZ_OUT[0], goalListLevel1)
 
@@ -300,7 +407,7 @@ def linearCalcute(maxlevel = 0, goalalldata = []):
         dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1], DBSHK_OUT[0] + DBSHK_OUT[1], goalListLevel1 + goalListLevel2)
 
     if maxlevel == 2:
-        anz = getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[1], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+        anz = getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[2], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
 
         cc = getinequality(CC_IN[0] + CC_IN[1] + CC_IN[2], CC_OUT[0] + CC_OUT[1] + CC_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
 
@@ -326,7 +433,7 @@ def linearCalcute(maxlevel = 0, goalalldata = []):
     print(b)
     boundsList = []
     for i in goalalldata:
-        boundsList.append((0, None))
+        boundsList.append((0.1, None))
 
     res = optimize.linprog(goalalldata, A_ub=a, b_ub=b,
                            bounds=tuple(boundsList))
@@ -344,7 +451,7 @@ def canRebalanceOrNot(needcheck = 0, datas = [[]]):
             else:
                 checkdate.extend(dd)
     # need add funtion to linear
-    return linearCalcute(needcheck, checkdate)
+    return linearCalcutel(needcheck, checkdate)
 
 def filterCanRebalance(needchecklevel = 0, candidates= [[[]]]):
     realResult = []

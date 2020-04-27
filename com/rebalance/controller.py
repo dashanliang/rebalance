@@ -1,5 +1,5 @@
 from com.rebalance.common.main import *
-
+from com.rebalance.common.globaldata import *
 
 def calculateMaxLevel2():
     for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
@@ -129,4 +129,7 @@ def controllerMaxLevel(maxLevel = 0):
     if atleastLevel >= 2:
         return calculateMaxLevel2()
 
+getmhdata()
+levelmax(3)
+getdataOut()
 print(controllerMaxLevel(3))
