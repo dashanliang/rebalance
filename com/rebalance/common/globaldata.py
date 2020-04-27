@@ -93,7 +93,7 @@ def datatoclassMhdata(d):
     return mhdata(d['mhName'], d['balance'], d['need'])
 
 
-testdata = '{"fromMh": "anz", "toMh": "scbhk", "level": 0} ; {"fromMh": "anz", "toMh": "dbhk", "level": 1} ; {"fromMh": "anz", "toMh": "scbsg", "level": 1} ; {"fromMh": "anz", "toMh": "cc", "level": 2} ; {"fromMh": "cc", "toMh": "dbhk", "level": 2} ; {"fromMh": "scbhk", "toMh": "scbsg", "level": 0} ; {"fromMh": "scbhk", "toMh": "anz", "level": 2} ; {"fromMh": "scbsg", "toMh": "anz", "level": 0} ; {"fromMh": "scbsg", "toMh": "scbhk", "level": 1} ; {"fromMh": "dbshk", "toMh": "anz", "level": 1}'
+testdata = '{"fromMh": "anz", "toMh": "scbhk", "level": 0} ; {"fromMh": "anz", "toMh": "dbhk", "level": 1} ; {"fromMh": "anz", "toMh": "scbsg", "level": 1} ; {"fromMh": "anz", "toMh": "cc", "level": 2} ; {"fromMh": "cc", "toMh": "dbhk", "level": 1} ; {"fromMh": "scbhk", "toMh": "scbsg", "level": 0} ; {"fromMh": "scbhk", "toMh": "anz", "level": 2} ; {"fromMh": "scbsg", "toMh": "anz", "level": 0} ; {"fromMh": "scbsg", "toMh": "scbhk", "level": 1} ; {"fromMh": "dbshk", "toMh": "anz", "level": 1}'
 testmhdata = '{"mhName": "anz", "balance": 0, "need": 20} ; {"mhName": "cc", "balance": 0, "need": 20} ; {"mhName": "scbhk", "balance": 0, "need": 20} ; {"mhName": "scbsg", "balance": 1000, "need": 0} ; {"mhName": "dbhk", "balance": 0, "need": 50} ; {"mhName": "dbshk", "balance": 500, "need": 0}'
 
 mhdatas = []
