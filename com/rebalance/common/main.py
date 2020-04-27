@@ -47,7 +47,7 @@ def getinequalityForReal(in_data = [], out_data = [], allNode = []):
     return inequalityData
 
 def checkoptimizeisok(level = 0, allNodes = []):
-    return linearCalcute(level, allNodes)
+    return linearCalcuteForReal(level, allNodes)
 
 def checkLeastLevel(MaxLevel = 3):
     sumLen = 0
@@ -333,7 +333,7 @@ def linearCalcuteForReal(maxlevel = 0, goalalldata = []):
     metric = []
     goalalldata1 = []
     if maxlevel >= 0:
-        for data in (mhoutdata[0]):
+        for data in mhoutdata[0]:
             goalalldata1  = goalalldata1 + data
 
     if maxlevel == 0:
@@ -341,20 +341,20 @@ def linearCalcuteForReal(maxlevel = 0, goalalldata = []):
             metric.append(np.multiply(getinequalityForReal(data, mhindata[0][i], goalalldata1), goalalldata))
 
     if maxlevel >= 1:
-        for data in (mhoutdata[1]):
-            goalalldata1 = goalalldata1 + data
+        for data1 in mhoutdata[1]:
+            goalalldata1 = goalalldata1 + data1
 
     if maxlevel == 1:
-        for i, data in enumerate(mhoutdata[1]):
-            metric.append(np.multiply(getinequalityForReal(mhoutdata[0][i] + data, mhindata[0][i] + mhindata[1][i], goalalldata1), goalalldata))
+        for i, data2 in enumerate(mhoutdata[1]):
+            metric.append(np.multiply(getinequalityForReal(mhoutdata[0][i] + data2, mhindata[0][i] + mhindata[1][i], goalalldata1), goalalldata))
 
     if maxlevel >= 2:
-        for data in (mhoutdata[2]):
-            goalalldata1 = goalalldata1 + data
+        for data3 in (mhoutdata[2]):
+            goalalldata1 = goalalldata1 + data3
 
     if maxlevel == 2:
-        for i, data in enumerate(mhoutdata[2]):
-            metric.append(np.multiply(getinequalityForReal(mhoutdata[0][i] + mhoutdata[1][i] + data, mhindata[0][i] + mhindata[1][i] + mhindata[2][i], goalalldata1), goalalldata))
+        for i, data4 in enumerate(mhoutdata[2]):
+            metric.append(np.multiply(getinequalityForReal(mhoutdata[0][i] + mhoutdata[1][i] + data4, mhindata[0][i] + mhindata[1][i] + mhindata[2][i], goalalldata1), goalalldata))
 
 
     a = np.array(metric)
@@ -451,7 +451,7 @@ def canRebalanceOrNot(needcheck = 0, datas = [[]]):
             else:
                 checkdate.extend(dd)
     # need add funtion to linear
-    return linearCalcutel(needcheck, checkdate)
+    return linearCalcuteForReal(needcheck, checkdate)
 
 def filterCanRebalance(needchecklevel = 0, candidates= [[[]]]):
     realResult = []

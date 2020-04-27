@@ -168,7 +168,7 @@ def getdataOut(data = testdata, allindata = mhindata, alloutdata = mhoutdata):
         i = i + 1
     return None
 
-getmhdata()
-levelmax(3)
-getdataOut()
+# getmhdata()
+# levelmax(3)
+# getdataOut()
 
