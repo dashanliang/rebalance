@@ -2,7 +2,7 @@ from com.rebalance.common.main import *
 from com.rebalance.common.globaldata import *
 
 def calculateMaxLevel2():
-    for i in np.arange(0, np.sum(goalListLevelINLen2), 1):
+    for i in np.arange(0, getlevelLenForReal(2), 1):
         best = generalalldata(generalItemsForEachLevel(2, i + 1), 2)
         print(best)
         if best != None:
@@ -18,7 +18,7 @@ def calculateMaxLevel2():
 
     print(tmpAllCandidate)
 
-    for i in np.arange(0, np.sum(goalListLevelINLen1) + 1, 1):
+    for i in np.arange(0, getlevelLenForReal(1) + 1, 1):
         tmpdata = []
         tmpdata = generalItemsForEachLevel(1, i)
         tmpdata.extend(tmpAllCandidate)
@@ -38,7 +38,7 @@ def calculateMaxLevel2():
 
     print([tmpAllCandidateFor1])
 
-    for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
+    for i in np.arange(0, getlevelLenForReal(0) + 1, 1):
         tmpdata = []
         tmpdata = generalItemsForEachLevel(0, i)
         tmpdata.extend([tmpAllCandidateFor1])
@@ -66,7 +66,7 @@ def calculateMaxLevel2():
 
 def calculateMaxLevel1():
     tmpPaths = []
-    for i in np.arange(0, np.sum(goalListLevelINLen1), 1):
+    for i in np.arange(0, getlevelLenForReal(1), 1):
         best = generalalldata(generalItemsForEachLevel(1, i + 1), 1)
         print(best)
         if best != None:
@@ -80,7 +80,7 @@ def calculateMaxLevel1():
 
     print(tmpAllCandidate)
 
-    for i in np.arange(0, np.sum(goalListLevelINLen) + 1, 1):
+    for i in np.arange(0, getlevelLenForReal(0) + 1, 1):
         tmpdata = []
         tmpdata = generalItemsForEachLevel(0, i)
         tmpdata.extend(tmpAllCandidate)
@@ -106,7 +106,7 @@ def calculateMaxLevel1():
 
 def calculateMaxLevel0(level = 0):
     best = []
-    for i in np.arange(0, np.sum(goalListLevelINLen), 1):
+    for i in np.arange(0, getlevelLenForReal(0), 1):
         best = generalalldata(generalItemsForEachLevel(level, i + 1))
         print(best)
         if best != None:

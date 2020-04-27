@@ -7,28 +7,35 @@ from scipy import optimize
 from itertools import product
 from com.rebalance.common.globaldata import *
 
-def getlevelLen(i):
-    if i == 0:
-        return np.sum(goalListLevelINLen)
-    if i == 2:
-        return np.sum(goalListLevelINLen2)
-    return np.sum(goalListLevelINLen1)
+# def getlevelLen(i):
+#     if i == 0:
+#         return np.sum(goalListLevelINLen)
+#     if i == 2:
+#         return np.sum(goalListLevelINLen2)
+#     return np.sum(goalListLevelINLen1)
 
-def getinequality(in_data = [], out_data = [], allNode = []):
-    inequalityData = np.zeros(len(allNode), dtype= np.int)
-    for mh in in_data :
-        for index, mh_node in enumerate(allNode):
-            if mh.__name__ == mh_node.__name__ :
-                inequalityData[index] = 1
-                break
+def getlevelLenForReal(i):
+    tmp = mhoutdata[i]
+    totalLen = 0
+    for data in tmp:
+        totalLen = totalLen + len(data)
+    return totalLen
 
-    for mh in out_data :
-        for index, mh_node in enumerate(allNode):
-            if mh.__name__ == mh_node.__name__ :
-                inequalityData[index] = -1
-                break
-
-    return inequalityData
+# def getinequality(in_data = [], out_data = [], allNode = []):
+#     inequalityData = np.zeros(len(allNode), dtype= np.int)
+#     for mh in in_data :
+#         for index, mh_node in enumerate(allNode):
+#             if mh.__name__ == mh_node.__name__ :
+#                 inequalityData[index] = 1
+#                 break
+#
+#     for mh in out_data :
+#         for index, mh_node in enumerate(allNode):
+#             if mh.__name__ == mh_node.__name__ :
+#                 inequalityData[index] = -1
+#                 break
+#
+#     return inequalityData
 
 def getinequalityForReal(in_data = [], out_data = [], allNode = []):
     inequalityData = np.zeros(len(allNode), dtype= np.int)
@@ -52,7 +59,7 @@ def checkoptimizeisok(level = 0, allNodes = []):
 def checkLeastLevel(MaxLevel = 3):
     sumLen = 0
     for i in np.arange(0, MaxLevel, 1):
-        sumLen = sumLen + getlevelLen(i)
+        sumLen = sumLen + getlevelLenForReal(i)
         tmpNodes = np.ones(sumLen, dtype=np.int)
         if checkoptimizeisok(i, tmpNodes) == True:
             return i
@@ -133,9 +140,9 @@ def generalLevelMaxSequenceAtLeast(levelData = 0, atleastMaxLen = 1, otherData =
     if maxIndexLevel > 0 :
         statisData = []
         for i in np.arange(0, maxIndexLevel, 1):
-            statisData.append(np.ones(getlevelLen(i), dtype=np.int))
+            statisData.append(np.ones(getlevelLenForReal(i), dtype=np.int))
         lowleveldata.append(statisData)
-    highleveldata = generalListSequence(getlevelLen(maxIndexLevel), atleastMaxLen)
+    highleveldata = generalListSequence(getlevelLenForReal(maxIndexLevel), atleastMaxLen)
 
     needGeneralData = []
     if len(lowleveldata) > 0:
@@ -164,130 +171,130 @@ def generalItemsForEachLevel(level = 0, maxatleast = 0):
     return tmpAllCandidate
 
 # check need level 2 / level 3 or not
-class x1:
-    value = 0.0
-
-class x2:
-    value = 0.0
-
-class x3:
-    value = 0.0
-
-class x4:
-    value = 0.0
-
-class x5:
-    value = 0.0
-
-class x6:
-    value = 0.0
-
-class x7:
-    value = 0.0
-
-class x8:
-    value = 0.0
-
-class x9:
-    value = 0.0
-
-class x10:
-    value = 0.0
-
-class x11:
-    value = 0.0
-
-class x12:
-    value = 0.0
-
-class x13:
-    value = 0.0
-
-# analysis all mh details
-ANZ_OUT = [[x1], [x2], [x3]]
-ANZ_IN = [[x5], [x9, x8], [x4]]
+# class x1:
+#     value = 0.0
+#
+# class x2:
+#     value = 0.0
+#
+# class x3:
+#     value = 0.0
+#
+# class x4:
+#     value = 0.0
+#
+# class x5:
+#     value = 0.0
+#
+# class x6:
+#     value = 0.0
+#
+# class x7:
+#     value = 0.0
+#
+# class x8:
+#     value = 0.0
+#
+# class x9:
+#     value = 0.0
+#
+# class x10:
+#     value = 0.0
+#
+# class x11:
+#     value = 0.0
+#
+# class x12:
+#     value = 0.0
+#
+# class x13:
+#     value = 0.0
+#
+# # analysis all mh details
+# ANZ_OUT = [[x1], [x2], [x3]]
+# ANZ_IN = [[x5], [x9, x8], [x4]]
 ANZ_BALANCE = 0
 ANZ_NEED = 20
-
-CC_OUT = [[], [], [x4]]
-CC_IN = [[], [x10], []]
+#
+# CC_OUT = [[], [], [x4]]
+# CC_IN = [[], [x10], []]
 CC_BALANCE = 0
 CC_NEED = 20
-
-SCBHK_OUT = [[x5], [x6], []]
-SCBHK_IN = [[x7], [], [x3]]
+#
+# SCBHK_OUT = [[x5], [x6], []]
+# SCBHK_IN = [[x7], [], [x3]]
 SCBHK_BALANCE = 0
 SCBHK_NEED = 20
-
-SCBSG_OUT = [[x7], [x8], []]
-SCBSG_IN = [[x1], [x6], []]
+#
+# SCBSG_OUT = [[x7], [x8], []]
+# SCBSG_IN = [[x1], [x6], []]
 SCBSG_BALANCE = 1000
 SCBSG_NEED = 0
-
-DBHK_OUT = [[], [x9, x10], []]
-DBHK_IN = [[], [], []]
+#
+# DBHK_OUT = [[], [x9, x10], []]
+# DBHK_IN = [[], [], []]
 DBHK_BALANCE = 0
 DBHK_NEED = 50
-
-DBSHK_OUT = [[], [], []]
-DBSHK_IN = [[], [x2], []]
+#
+# DBSHK_OUT = [[], [], []]
+# DBSHK_IN = [[], [x2], []]
 DBSHK_BALANCE = 500
 DBSHK_NEED = 0
 
 # check level one is ok or not
-goal1 = len(ANZ_IN[0]) + len(CC_IN[0]) + len(SCBHK_IN[0]) + len(SCBSG_IN[0]) + len(DBHK_IN[0]) + len(DBSHK_IN[0])
-
-goalopt = np.ones(goal1 ,dtype = np.int)
-
-goalListLevel1 = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
-goalListLevel2 = ANZ_IN[1] + CC_IN[1] + SCBHK_IN[1] + SCBSG_IN[1] + DBHK_IN[1] + DBSHK_IN[1]
-goalListLevel3 = ANZ_IN[2] + CC_IN[2] + SCBHK_IN[2] + SCBSG_IN[2] + DBHK_IN[2] + DBSHK_IN[2]
-print(len(goalListLevel1))
-goalListLevelIN = []
-goalListLevelIN.append(ANZ_IN[0])
-goalListLevelIN.append(CC_IN[0])
-goalListLevelIN.append(SCBHK_IN[0])
-goalListLevelIN.append(SCBSG_IN[0])
-goalListLevelIN.append(DBHK_IN[0])
-goalListLevelIN.append(DBSHK_IN[0])
-goalListLevelIN1 = []
-goalListLevelIN1.append(ANZ_IN[1])
-goalListLevelIN1.append(CC_IN[1])
-goalListLevelIN1.append(SCBHK_IN[1])
-goalListLevelIN1.append(SCBSG_IN[1])
-goalListLevelIN1.append(DBHK_IN[1])
-goalListLevelIN1.append(DBSHK_IN[1])
-goalListLevelIN2 = []
-goalListLevelIN2.append(ANZ_IN[2])
-goalListLevelIN2.append(CC_IN[2])
-goalListLevelIN2.append(SCBHK_IN[2])
-goalListLevelIN2.append(SCBSG_IN[2])
-goalListLevelIN2.append(DBHK_IN[2])
-goalListLevelIN2.append(DBSHK_IN[2])
-
-goalListLevelINLen = []
-goalListLevelINLen.append(len(ANZ_IN[0]))
-goalListLevelINLen.append(len(CC_IN[0]))
-goalListLevelINLen.append(len(SCBHK_IN[0]))
-goalListLevelINLen.append(len(SCBSG_IN[0]))
-goalListLevelINLen.append(len(DBHK_IN[0]))
-goalListLevelINLen.append(len(DBSHK_IN[0]))
-
-goalListLevelINLen1 = []
-goalListLevelINLen1.append(len(ANZ_IN[1]))
-goalListLevelINLen1.append(len(CC_IN[1]))
-goalListLevelINLen1.append(len(SCBHK_IN[1]))
-goalListLevelINLen1.append(len(SCBSG_IN[1]))
-goalListLevelINLen1.append(len(DBHK_IN[1]))
-goalListLevelINLen1.append(len(DBSHK_IN[1]))
-
-goalListLevelINLen2 = []
-goalListLevelINLen2.append(len(ANZ_IN[2]))
-goalListLevelINLen2.append(len(CC_IN[2]))
-goalListLevelINLen2.append(len(SCBHK_IN[2]))
-goalListLevelINLen2.append(len(SCBSG_IN[2]))
-goalListLevelINLen2.append(len(DBHK_IN[2]))
-goalListLevelINLen2.append(len(DBSHK_IN[2]))
+# goal1 = len(ANZ_IN[0]) + len(CC_IN[0]) + len(SCBHK_IN[0]) + len(SCBSG_IN[0]) + len(DBHK_IN[0]) + len(DBSHK_IN[0])
+#
+# goalopt = np.ones(goal1 ,dtype = np.int)
+#
+# goalListLevel1 = ANZ_IN[0] + CC_IN[0] + SCBHK_IN[0] + SCBSG_IN[0] + DBHK_IN[0] + DBSHK_IN[0]
+# goalListLevel2 = ANZ_IN[1] + CC_IN[1] + SCBHK_IN[1] + SCBSG_IN[1] + DBHK_IN[1] + DBSHK_IN[1]
+# goalListLevel3 = ANZ_IN[2] + CC_IN[2] + SCBHK_IN[2] + SCBSG_IN[2] + DBHK_IN[2] + DBSHK_IN[2]
+# print(len(goalListLevel1))
+# goalListLevelIN = []
+# goalListLevelIN.append(ANZ_IN[0])
+# goalListLevelIN.append(CC_IN[0])
+# goalListLevelIN.append(SCBHK_IN[0])
+# goalListLevelIN.append(SCBSG_IN[0])
+# goalListLevelIN.append(DBHK_IN[0])
+# goalListLevelIN.append(DBSHK_IN[0])
+# goalListLevelIN1 = []
+# goalListLevelIN1.append(ANZ_IN[1])
+# goalListLevelIN1.append(CC_IN[1])
+# goalListLevelIN1.append(SCBHK_IN[1])
+# goalListLevelIN1.append(SCBSG_IN[1])
+# goalListLevelIN1.append(DBHK_IN[1])
+# goalListLevelIN1.append(DBSHK_IN[1])
+# goalListLevelIN2 = []
+# goalListLevelIN2.append(ANZ_IN[2])
+# goalListLevelIN2.append(CC_IN[2])
+# goalListLevelIN2.append(SCBHK_IN[2])
+# goalListLevelIN2.append(SCBSG_IN[2])
+# goalListLevelIN2.append(DBHK_IN[2])
+# goalListLevelIN2.append(DBSHK_IN[2])
+#
+# goalListLevelINLen = []
+# goalListLevelINLen.append(len(ANZ_IN[0]))
+# goalListLevelINLen.append(len(CC_IN[0]))
+# goalListLevelINLen.append(len(SCBHK_IN[0]))
+# goalListLevelINLen.append(len(SCBSG_IN[0]))
+# goalListLevelINLen.append(len(DBHK_IN[0]))
+# goalListLevelINLen.append(len(DBSHK_IN[0]))
+#
+# goalListLevelINLen1 = []
+# goalListLevelINLen1.append(len(ANZ_IN[1]))
+# goalListLevelINLen1.append(len(CC_IN[1]))
+# goalListLevelINLen1.append(len(SCBHK_IN[1]))
+# goalListLevelINLen1.append(len(SCBSG_IN[1]))
+# goalListLevelINLen1.append(len(DBHK_IN[1]))
+# goalListLevelINLen1.append(len(DBSHK_IN[1]))
+#
+# goalListLevelINLen2 = []
+# goalListLevelINLen2.append(len(ANZ_IN[2]))
+# goalListLevelINLen2.append(len(CC_IN[2]))
+# goalListLevelINLen2.append(len(SCBHK_IN[2]))
+# goalListLevelINLen2.append(len(SCBSG_IN[2]))
+# goalListLevelINLen2.append(len(DBHK_IN[2]))
+# goalListLevelINLen2.append(len(DBSHK_IN[2]))
 
 
 
@@ -380,67 +387,67 @@ def linearCalcuteForReal(maxlevel = 0, goalalldata = []):
     return res.get("success")
 
 
-def linearCalcute(maxlevel = 0, goalalldata = []):
-    anz = getinequality(ANZ_IN[0], ANZ_OUT[0], goalListLevel1)
-
-    cc = getinequality(CC_IN[0], CC_OUT[0], goalListLevel1)
-
-    scbhk = getinequality(SCBHK_IN[0], SCBHK_OUT[0], goalListLevel1)
-
-    scbsg = getinequality(SCBSG_IN[0], SCBSG_OUT[0], goalListLevel1)
-
-    dbhk = getinequality(DBHK_IN[0], DBHK_OUT[0], goalListLevel1)
-
-    dbshk = getinequality(DBSHK_IN[0], DBSHK_OUT[0], goalListLevel1)
-
-    if maxlevel == 1:
-        anz = getinequality(ANZ_IN[0] + ANZ_IN[1], ANZ_OUT[0] + ANZ_OUT[1], goalListLevel1 + goalListLevel2)
-
-        cc = getinequality(CC_IN[0] + CC_IN[1], CC_OUT[0] + CC_OUT[1], goalListLevel1 + goalListLevel2)
-
-        scbhk = getinequality(SCBHK_IN[0]+ SCBHK_IN[1], SCBHK_OUT[0] + SCBHK_OUT[1], goalListLevel1 + goalListLevel2)
-
-        scbsg = getinequality(SCBSG_IN[0] + SCBSG_IN[1], SCBSG_OUT[0] + SCBSG_OUT[1], goalListLevel1 + goalListLevel2)
-
-        dbhk = getinequality(DBHK_IN[0] + DBHK_IN[1], DBHK_OUT[0] + DBHK_OUT[1], goalListLevel1 + goalListLevel2)
-
-        dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1], DBSHK_OUT[0] + DBSHK_OUT[1], goalListLevel1 + goalListLevel2)
-
-    if maxlevel == 2:
-        anz = getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[2], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
-
-        cc = getinequality(CC_IN[0] + CC_IN[1] + CC_IN[2], CC_OUT[0] + CC_OUT[1] + CC_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
-
-        scbhk = getinequality(SCBHK_IN[0]+ SCBHK_IN[1] + SCBHK_IN[2], SCBHK_OUT[0] + SCBHK_OUT[1] + SCBHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
-
-        scbsg = getinequality(SCBSG_IN[0] + SCBSG_IN[1] + SCBSG_IN[2], SCBSG_OUT[0] + SCBSG_OUT[1] + SCBSG_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
-
-        dbhk = getinequality(DBHK_IN[0] + DBHK_IN[1] + DBHK_IN[2], DBHK_OUT[0] + DBHK_OUT[1] + DBHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
-
-        dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1] + DBSHK_IN[2], DBSHK_OUT[0] + DBSHK_OUT[1] + DBSHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
-
-    a = np.array([np.multiply(anz, goalalldata), np.multiply(cc, goalalldata),
-                  np.multiply(scbhk, goalalldata), np.multiply(scbsg, goalalldata),
-                  np.multiply(dbhk, goalalldata), np.multiply(dbshk, goalalldata)])
-    print(a)
-    b = np.array([ANZ_BALANCE-ANZ_NEED,
-                  CC_BALANCE-CC_NEED,
-                 SCBHK_BALANCE-SCBHK_NEED,
-                 SCBSG_BALANCE-SCBSG_NEED,
-                 DBHK_BALANCE-DBHK_NEED,
-                  DBSHK_BALANCE-DBSHK_NEED])
-
-    print(b)
-    boundsList = []
-    for i in goalalldata:
-        boundsList.append((0.1, None))
-
-    res = optimize.linprog(goalalldata, A_ub=a, b_ub=b,
-                           bounds=tuple(boundsList))
-
-    print(res)
-    print(goalalldata)
-    return res.get("success")
+# def linearCalcute(maxlevel = 0, goalalldata = []):
+#     anz = getinequality(ANZ_IN[0], ANZ_OUT[0], goalListLevel1)
+#
+#     cc = getinequality(CC_IN[0], CC_OUT[0], goalListLevel1)
+#
+#     scbhk = getinequality(SCBHK_IN[0], SCBHK_OUT[0], goalListLevel1)
+#
+#     scbsg = getinequality(SCBSG_IN[0], SCBSG_OUT[0], goalListLevel1)
+#
+#     dbhk = getinequality(DBHK_IN[0], DBHK_OUT[0], goalListLevel1)
+#
+#     dbshk = getinequality(DBSHK_IN[0], DBSHK_OUT[0], goalListLevel1)
+#
+#     if maxlevel == 1:
+#         anz = getinequality(ANZ_IN[0] + ANZ_IN[1], ANZ_OUT[0] + ANZ_OUT[1], goalListLevel1 + goalListLevel2)
+#
+#         cc = getinequality(CC_IN[0] + CC_IN[1], CC_OUT[0] + CC_OUT[1], goalListLevel1 + goalListLevel2)
+#
+#         scbhk = getinequality(SCBHK_IN[0]+ SCBHK_IN[1], SCBHK_OUT[0] + SCBHK_OUT[1], goalListLevel1 + goalListLevel2)
+#
+#         scbsg = getinequality(SCBSG_IN[0] + SCBSG_IN[1], SCBSG_OUT[0] + SCBSG_OUT[1], goalListLevel1 + goalListLevel2)
+#
+#         dbhk = getinequality(DBHK_IN[0] + DBHK_IN[1], DBHK_OUT[0] + DBHK_OUT[1], goalListLevel1 + goalListLevel2)
+#
+#         dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1], DBSHK_OUT[0] + DBSHK_OUT[1], goalListLevel1 + goalListLevel2)
+#
+#     if maxlevel == 2:
+#         anz = getinequality(ANZ_IN[0] + ANZ_IN[1] + ANZ_IN[2], ANZ_OUT[0] + ANZ_OUT[1] + ANZ_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+#
+#         cc = getinequality(CC_IN[0] + CC_IN[1] + CC_IN[2], CC_OUT[0] + CC_OUT[1] + CC_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+#
+#         scbhk = getinequality(SCBHK_IN[0]+ SCBHK_IN[1] + SCBHK_IN[2], SCBHK_OUT[0] + SCBHK_OUT[1] + SCBHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+#
+#         scbsg = getinequality(SCBSG_IN[0] + SCBSG_IN[1] + SCBSG_IN[2], SCBSG_OUT[0] + SCBSG_OUT[1] + SCBSG_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+#
+#         dbhk = getinequality(DBHK_IN[0] + DBHK_IN[1] + DBHK_IN[2], DBHK_OUT[0] + DBHK_OUT[1] + DBHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+#
+#         dbshk = getinequality(DBSHK_IN[0] + DBSHK_IN[1] + DBSHK_IN[2], DBSHK_OUT[0] + DBSHK_OUT[1] + DBSHK_OUT[2], goalListLevel1 + goalListLevel2 + goalListLevel3)
+#
+#     a = np.array([np.multiply(anz, goalalldata), np.multiply(cc, goalalldata),
+#                   np.multiply(scbhk, goalalldata), np.multiply(scbsg, goalalldata),
+#                   np.multiply(dbhk, goalalldata), np.multiply(dbshk, goalalldata)])
+#     print(a)
+#     b = np.array([ANZ_BALANCE-ANZ_NEED,
+#                   CC_BALANCE-CC_NEED,
+#                  SCBHK_BALANCE-SCBHK_NEED,
+#                  SCBSG_BALANCE-SCBSG_NEED,
+#                  DBHK_BALANCE-DBHK_NEED,
+#                   DBSHK_BALANCE-DBSHK_NEED])
+#
+#     print(b)
+#     boundsList = []
+#     for i in goalalldata:
+#         boundsList.append((0.1, None))
+#
+#     res = optimize.linprog(goalalldata, A_ub=a, b_ub=b,
+#                            bounds=tuple(boundsList))
+#
+#     print(res)
+#     print(goalalldata)
+#     return res.get("success")
 
 def canRebalanceOrNot(needcheck = 0, datas = [[]]):
     checkdate = []
@@ -460,18 +467,23 @@ def filterCanRebalance(needchecklevel = 0, candidates= [[[]]]):
             realResult.append(cadidate)
     return realResult
 
-def getmhlen(level = 1):
-    if level == 0 :
-        return goalListLevelINLen
-    if level == 1 :
-        return goalListLevelINLen1
-    if level == 2:
-        return goalListLevelINLen2
-    return None
+# def getmhlen(level = 1):
+#     if level == 0 :
+#         return goalListLevelINLen
+#     if level == 1 :
+#         return goalListLevelINLen1
+#     if level == 2:
+#         return goalListLevelINLen2
+#     return None
+def getmhlenForReal(level = 1):
+    tmpdataforlen = []
+    for tmpdata in mhoutdata[level]:
+        tmpdataforlen.append(len(tmpdata))
+    return tmpdataforlen
 
 def calnodedata(level = 0, node = []):
     datatmp = []
-    tmplens = getmhlen(level)
+    tmplens = getmhlenForReal(level)
     alllen = []
     lens = 0
     for tmplen in tmplens:
