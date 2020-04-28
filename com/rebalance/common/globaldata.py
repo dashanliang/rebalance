@@ -119,8 +119,8 @@ def getmhdatabalance(data1 = testmhdata):
     for eachnode in data1.split(";"):
         mhbalance = []
         nodeclass = json.loads(eachnode, object_hook = datatoclassMhdata)
-        mhbalance.append(nodeclass.balance)
-        mhbalance.append(nodeclass.need)
+        mhbalance.append(int(nodeclass.balance))
+        mhbalance.append(int(nodeclass.need))
         mhrebalance.append(mhbalance)
     return mhrebalance
 

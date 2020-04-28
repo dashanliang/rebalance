@@ -129,10 +129,47 @@ def controllerMaxLevel(maxLevel = 0):
     if atleastLevel >= 2:
         return calculateMaxLevel2()
 
+
+
+def getrealids(paths1010 = [[]], pathid = [[[]]]):
+    tmpids = []
+    for ids in pathid:
+        tmpid  = []
+        for id in ids:
+            tmpid.extend(id)
+        tmpids.extend(tmpid)
+    return tmpids
+
+
+
+def getrealindex(paths1010 = [[]], payoutpathid = [], pathid = [[[]]]):
+    tmpiss = getrealids(paths1010, pathid)
+    tmp1010 = []
+    for ph in paths1010:
+        tmp1010.extend(ph)
+    resultid = []
+    for tmp1 ,tmp10 in enumerate(tmp1010):
+        if tmp10 == 1:
+            resultid.append(tmpiss[tmp1])
+
+    resultgoog = []
+    for indexid , inid in enumerate(payoutpathid):
+        if inid in resultid:
+            resultgoog.append(indexid)
+
+    return resultgoog
+
+
+
 getmhdata()
 getmhdatabalance()
 levelmax(3)
 getdataOut()
-print(controllerMaxLevel(3))
+
+
+
+bestpaths = controllerMaxLevel(3)
+print(testdata)
 print(markdata)
 print(mhoutdata)
+print(getrealindex(bestpaths, markdata, mhoutdata))

@@ -10,8 +10,6 @@ def getMhdata():
     # 打开文件
     data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo.xlsx')
     table = data.sheet_by_name('Sheet1')
-    print("整行值：" + str(table.row_values(0)))
-    print("整列值：" + str(table.col_values(0)))
 
     tmpExceldata = ''
 
