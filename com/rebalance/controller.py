@@ -1,5 +1,6 @@
 from com.rebalance.common.main import *
 from com.rebalance.common.globaldata import *
+from com.rebalance.common.excelExec import *
 
 def calculateMaxLevel2():
     for i in np.arange(0, getlevelLenForReal(2), 1):
@@ -145,23 +146,37 @@ def getrealids(paths1010 = [[]], pathid = [[[]]]):
 def getrealindex(paths1010 = [[]], payoutpathid = [], pathid = [[[]]]):
     tmpiss = getrealids(paths1010, pathid)
     tmp1010 = []
+    realpairdata = []
     for ph in paths1010:
         tmp1010.extend(ph)
     resultid = []
+    allresultid = []
     for tmp1 ,tmp10 in enumerate(tmp1010):
+        allresultid.append(tmpiss[tmp1])
         if tmp10 == 1:
             resultid.append(tmpiss[tmp1])
+
+    tmdat = []
+    for daa in paths1010:
+        tmdat.extend(daa)
+    amounts = linearCalcuteForData(checkLeastLevel(3), tmdat)
 
     resultgoog = []
     for indexid , inid in enumerate(payoutpathid):
         if inid in resultid:
+            pair = []
+            pair.append(indexid)
+            pair.append(amounts[allresultid.index(inid)])
+            realpairdata.append(pair)
             resultgoog.append(indexid)
 
-    return resultgoog
+
+    print(amounts)
+    return realpairdata
 
 
 
-
+getMhdata()
 getmhdata()
 getmhdatabalance()
 levelmax(3)
@@ -170,4 +185,5 @@ bestpaths = controllerMaxLevel(3)
 print(testdata)
 print(markdata)
 print(mhoutdata)
-bestrealpath = getrealindex(bestpaths, markdata, mhoutdata)
+reeeeldate = getrealindex(bestpaths, markdata, mhoutdata)
+writefile(reeeeldate)

@@ -8,7 +8,7 @@ from com.rebalance.common.globaldata import *
 
 def getMhdata():
     # 打开文件
-    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo.xlsx')
+    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo1.xlsx')
     table = data.sheet_by_name('Sheet1')
 
     tmpExceldata = ''
@@ -37,12 +37,29 @@ def getMhdata():
                                           default=lambda obj: obj.__dict__)
 
     print(tmpExceldataForBal)
+
+    testmhdata = tmpExceldataForBal
+    testdata = tmpExceldata
+    return
+
+
+def writefile(data11 = [[]]):
+    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo1.xlsx')
+    table = data.sheet_by_name('Sheet1')
     copy_workbook = copy(data)
     wb = copy_workbook.get_sheet(0)
-    wb.write(2, 4, "0")
-    wb.write(5, 3, "1")
-    wb.write(11, 3, "1")
-    copy_workbook.save("/Users/jinglan.liang/Downloads/demo.xlsx")
 
+    i = 0
+    for row in np.arange(1, 11 , 1):
+        for col in np.arange(1, 11, 1):
+            tmp = table.cell(row, col).value
+            if tmp != '':
+                for da in data11:
+                    if int(da[0]) == i:
+                        wb.write(row + 16, col, da[1])
+                        break
+                i  = i + 1
 
-getMhdata()
+    copy_workbook.save("/Users/jinglan.liang/Downloads/demo1.xlsx")
+
+    return
