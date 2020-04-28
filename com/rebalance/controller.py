@@ -161,15 +161,13 @@ def getrealindex(paths1010 = [[]], payoutpathid = [], pathid = [[[]]]):
 
 
 
+
 getmhdata()
 getmhdatabalance()
 levelmax(3)
 getdataOut()
-
-
-
 bestpaths = controllerMaxLevel(3)
 print(testdata)
 print(markdata)
 print(mhoutdata)
-print(getrealindex(bestpaths, markdata, mhoutdata))
+bestrealpath = getrealindex(bestpaths, markdata, mhoutdata)
