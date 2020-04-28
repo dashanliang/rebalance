@@ -8,5 +8,9 @@ if __name__ == '__main__':
     levelmax(3)
     getdataOut()
     bestpaths = controllerMaxLevel(3)
-    reeeeldate = getrealindex(bestpaths, markdata, mhoutdata)
-    writefile(reeeeldate)
+    if bestpaths != None:
+        reeeeldate = getrealindex(bestpaths, markdata, mhoutdata)
+        print(reeeeldate)
+        writefile(reeeeldate)
+    else:
+        print("there is no path can rebalance")

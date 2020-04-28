@@ -132,13 +132,21 @@ def controllerMaxLevel(maxLevel = 0):
 
 
 
-def getrealids(paths1010 = [[]], pathid = [[[]]]):
+def getrealids(paths101 = [[]], pathid = [[[]]]):
     tmpids = []
     for ids in pathid:
         tmpid  = []
         for id in ids:
             tmpid.extend(id)
         tmpids.extend(tmpid)
+    filterornot = []
+    for pathids in paths101:
+        filterornot.extend(pathids)
+
+    rettmpids = []
+    for indepi, pi in enumerate(filterornot):
+        if int(pi) == 1:
+            rettmpids.append(tmpids[indepi])
     return tmpids
 
 

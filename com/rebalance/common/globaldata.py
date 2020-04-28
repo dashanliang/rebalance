@@ -4,6 +4,108 @@ import numpy as np
 import uuid
 
 
+
+# coding=utf-8
+from copy import copy
+
+import xlrd
+from xlutils.copy import copy
+import numpy as np
+# from com.rebalance.common.globaldata import *
+
+def getMhdatabal():
+    # 打开文件
+    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo2.xlsx')
+    table = data.sheet_by_name('Sheet1')
+
+    tmpExceldata = ''
+
+    for row in np.arange(1, 11 , 1):
+        for col in np.arange(1, 11, 1):
+            tmp = table.cell(row, col).value
+            if tmp != '':
+                if tmpExceldata == '':
+                    tmpExceldata = json.dumps(dataforpath('mh' + str(row), 'mh' + str(col), tmp), default=lambda obj: obj.__dict__)
+                else:
+                    tmpExceldata = tmpExceldata + ";" + json.dumps(dataforpath('mh' + str(row), 'mh' + str(col), tmp), default=lambda obj: obj.__dict__)
+
+    print(tmpExceldata)
+
+    tmpExceldataForBal = ''
+
+    for colForbal in np.arange(1, 11, 1):
+        tmpbal = table.cell(11, colForbal).value
+        if tmpbal != '':
+            if tmpExceldataForBal == '':
+                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                                          default=lambda obj: obj.__dict__)
+            else:
+                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                                          default=lambda obj: obj.__dict__)
+
+    print(tmpExceldataForBal)
+
+    # testmhdata = tmpExceldataForBal
+    # testdata = tmpExceldata
+    return tmpExceldataForBal
+
+def getMhdata():
+    # 打开文件
+    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo2.xlsx')
+    table = data.sheet_by_name('Sheet1')
+
+    tmpExceldata = ''
+
+    for row in np.arange(1, 11 , 1):
+        for col in np.arange(1, 11, 1):
+            tmp = table.cell(row, col).value
+            if tmp != '':
+                if tmpExceldata == '':
+                    tmpExceldata = json.dumps(dataforpath('mh' + str(row), 'mh' + str(col), tmp), default=lambda obj: obj.__dict__)
+                else:
+                    tmpExceldata = tmpExceldata + ";" + json.dumps(dataforpath('mh' + str(row), 'mh' + str(col), tmp), default=lambda obj: obj.__dict__)
+
+    print(tmpExceldata)
+
+    tmpExceldataForBal = ''
+
+    for colForbal in np.arange(1, 11, 1):
+        tmpbal = table.cell(11, colForbal).value
+        if tmpbal != '':
+            if tmpExceldataForBal == '':
+                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                                          default=lambda obj: obj.__dict__)
+            else:
+                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                                          default=lambda obj: obj.__dict__)
+
+    print(tmpExceldataForBal)
+
+    # testmhdata = tmpExceldataForBal
+    # testdata = tmpExceldata
+    return tmpExceldata
+
+def writefile(data11 = [[]]):
+    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo2.xlsx')
+    table = data.sheet_by_name('Sheet1')
+    copy_workbook = copy(data)
+    wb = copy_workbook.get_sheet(0)
+
+    i = 0
+    for row in np.arange(1, 11 , 1):
+        for col in np.arange(1, 11, 1):
+            tmp = table.cell(row, col).value
+            if tmp != '':
+                for da in data11:
+                    if int(da[0]) == i:
+                        wb.write(row + 16, col, da[1])
+                        break
+                i  = i + 1
+
+    copy_workbook.save("/Users/jinglan.liang/Downloads/demo2.xlsx")
+
+    return
+
 # analysis all mh details
 # ANZ_OUT = [[x1], [x2], [x3]]
 # ANZ_IN = [[x5], [x9, x8], [x4]]
@@ -99,8 +201,10 @@ def datatoclassMhdata(d):
     return mhdata(d['mhName'], d['balance'], d['need'])
 
 
-testdata = '{"fromMh": "anz", "toMh": "scbhk", "level": 0} ; {"fromMh": "anz", "toMh": "dbhk", "level": 1} ; {"fromMh": "anz", "toMh": "scbsg", "level": 1} ; {"fromMh": "anz", "toMh": "cc", "level": 2} ; {"fromMh": "cc", "toMh": "dbhk", "level": 1} ; {"fromMh": "scbhk", "toMh": "scbsg", "level": 0} ; {"fromMh": "scbhk", "toMh": "anz", "level": 2} ; {"fromMh": "scbsg", "toMh": "anz", "level": 0} ; {"fromMh": "scbsg", "toMh": "scbhk", "level": 1} ; {"fromMh": "dbshk", "toMh": "anz", "level": 1}'
-testmhdata = '{"mhName": "anz", "balance": 0, "need": 20} ; {"mhName": "cc", "balance": 0, "need": 20} ; {"mhName": "scbhk", "balance": 0, "need": 20} ; {"mhName": "scbsg", "balance": 1000, "need": 0} ; {"mhName": "dbhk", "balance": 0, "need": 50} ; {"mhName": "dbshk", "balance": 500, "need": 0}'
+testdata = getMhdata()
+testmhdata = getMhdatabal()
+# = '{"fromMh": "anz", "toMh": "scbhk", "level": 0} ; {"fromMh": "anz", "toMh": "dbhk", "level": 1} ; {"fromMh": "anz", "toMh": "scbsg", "level": 1} ; {"fromMh": "anz", "toMh": "cc", "level": 2} ; {"fromMh": "cc", "toMh": "dbhk", "level": 1} ; {"fromMh": "scbhk", "toMh": "scbsg", "level": 0} ; {"fromMh": "scbhk", "toMh": "anz", "level": 2} ; {"fromMh": "scbsg", "toMh": "anz", "level": 0} ; {"fromMh": "scbsg", "toMh": "scbhk", "level": 1} ; {"fromMh": "dbshk", "toMh": "anz", "level": 1}'
+# testmhdata = '{"mhName": "anz", "balance": 0, "need": 20} ; {"mhName": "cc", "balance": 0, "need": 20} ; {"mhName": "scbhk", "balance": 0, "need": 20} ; {"mhName": "scbsg", "balance": 1000, "need": 0} ; {"mhName": "dbhk", "balance": 0, "need": 50} ; {"mhName": "dbshk", "balance": 500, "need": 0}'
 
 mhdatas = []
 mhnames = []
