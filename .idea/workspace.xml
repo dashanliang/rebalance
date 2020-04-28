@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89614635-f605-4117-8b32-df9d5eae0ffc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/com/rebalance/common/excelExec.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/excelExec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/rebalance/common/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/rebalance/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +13,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/com/rebalance/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/rebalance/controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="146" selection-start-line="146" selection-end-line="146" />
+            <state>
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -26,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/rebalance/common/excelExec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+            <state relative-caret-position="206">
+              <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
               <folding>
                 <element signature="e#15#36#0" expanded="true" />
               </folding>
@@ -98,17 +108,17 @@
         <option value="$PROJECT_DIR$/com/rebalance/common/utils.py" />
         <option value="$PROJECT_DIR$/com/rebalance/common/functions.py" />
         <option value="$PROJECT_DIR$/com/rebalance/common/corefuntion.py" />
-        <option value="$PROJECT_DIR$/com/rebalance/server.py" />
         <option value="$PROJECT_DIR$/com/rebalance/common/globaldata.py" />
         <option value="$PROJECT_DIR$/com/rebalance/common/main.py" />
-        <option value="$PROJECT_DIR$/com/rebalance/controller.py" />
         <option value="$PROJECT_DIR$/com/rebalance/common/excelExec.py" />
+        <option value="$PROJECT_DIR$/com/rebalance/controller.py" />
+        <option value="$PROJECT_DIR$/com/rebalance/server.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1811" />
-    <option name="y" value="-507" />
+    <option name="x" value="102" />
+    <option name="y" value="183" />
     <option name="width" value="1920" />
     <option name="height" value="777" />
   </component>
@@ -164,7 +174,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.controller">
+  <component name="RunManager" selected="Python.server">
     <configuration name="controller" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="rebalance" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -272,9 +282,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.server" />
         <item itemvalue="Python.controller" />
         <item itemvalue="Python.excelExec" />
-        <item itemvalue="Python.server" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.globaldata" />
       </list>
@@ -320,7 +330,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1811" y="-507" width="1920" height="777" extended-state="0" />
+    <frame x="102" y="183" width="1920" height="777" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1687966" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -413,18 +423,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="343" />
+          <line>56</line>
+          <option name="timeStamp" value="345" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="346" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
           <line>57</line>
-          <option name="timeStamp" value="344" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
-          <line>56</line>
-          <option name="timeStamp" value="345" />
+          <option name="timeStamp" value="347" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -438,6 +448,11 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>int(da[0]) == i</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>resultid</expression-string>
         <language-id>Python</language-id>
@@ -475,11 +490,6 @@
       </expression>
       <expression>
         <expression-string>mhoutdata</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>mhoutdata[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -610,9 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/rebalance/server.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/rebalance/common/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3688">
@@ -633,22 +640,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/com/rebalance/common/excelExec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+          <folding>
+            <element signature="e#15#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/com/rebalance/controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
+        <state>
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/rebalance/common/excelExec.py">
+    <entry file="file://$PROJECT_DIR$/com/rebalance/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+        <state relative-caret-position="60">
+          <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
           <folding>
-            <element signature="e#15#36#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>

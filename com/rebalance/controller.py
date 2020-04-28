@@ -173,17 +173,3 @@ def getrealindex(paths1010 = [[]], payoutpathid = [], pathid = [[[]]]):
 
     print(amounts)
     return realpairdata
-
-
-
-getMhdata()
-getmhdata()
-getmhdatabalance()
-levelmax(3)
-getdataOut()
-bestpaths = controllerMaxLevel(3)
-print(testdata)
-print(markdata)
-print(mhoutdata)
-reeeeldate = getrealindex(bestpaths, markdata, mhoutdata)
-writefile(reeeeldate)
