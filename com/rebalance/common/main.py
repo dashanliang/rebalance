@@ -367,13 +367,17 @@ def linearCalcuteForReal(maxlevel = 0, goalalldata = []):
     a = np.array(metric)
 
     print(a)
-    b = np.array([ANZ_BALANCE-ANZ_NEED,
-                  CC_BALANCE-CC_NEED,
-                 SCBHK_BALANCE-SCBHK_NEED,
-                 SCBSG_BALANCE-SCBSG_NEED,
-                 DBHK_BALANCE-DBHK_NEED,
-                  DBSHK_BALANCE-DBSHK_NEED])
+    balancedatas = []
+    for bd in mhrebalance:
+        balancedatas.append(bd[0] -bd[1])
 
+    # b = np.array([ANZ_BALANCE-ANZ_NEED,
+    #               CC_BALANCE-CC_NEED,
+    #              SCBHK_BALANCE-SCBHK_NEED,
+    #              SCBSG_BALANCE-SCBSG_NEED,
+    #              DBHK_BALANCE-DBHK_NEED,
+    #               DBSHK_BALANCE-DBSHK_NEED])
+    b = np.array(balancedatas)
     print(b)
     boundsList = []
     for i in goalalldata:

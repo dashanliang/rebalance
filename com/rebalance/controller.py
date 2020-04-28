@@ -130,6 +130,9 @@ def controllerMaxLevel(maxLevel = 0):
         return calculateMaxLevel2()
 
 getmhdata()
+getmhdatabalance()
 levelmax(3)
 getdataOut()
 print(controllerMaxLevel(3))
+print(markdata)
+print(mhoutdata)

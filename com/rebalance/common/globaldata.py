@@ -48,6 +48,12 @@ class data:
         self.toMh = toMh
         self.level = level
 
+class dataforpath:
+    def __init__(self, fromMh, toMh, level):
+        self.fromMh = fromMh
+        self.toMh = toMh
+        self.level = level
+
 x1 = data("anz", "scbhk", 0)
 x2 = data("anz", "dbhk", 1)
 x3 = data("anz", "scbsg", 1)
@@ -102,6 +108,7 @@ mhrebalance = []
 mhoutdata = []
 mhindata = []
 markdata = []
+
 
 def getmhdata(data1 = testmhdata):
     for eachnode in data1.split(";"):
