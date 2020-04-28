@@ -115,7 +115,7 @@ def calculateMaxLevel0(level = 0):
     bestPath = calculateTheHighPrority(best)
     bestBios = np.argmax(bestPath)
     print(bestBios)
-    return bestPath[bestBios]
+    return best[bestBios]
 
 def controllerMaxLevel(maxLevel = 0):
     atleastLevel = checkLeastLevel(maxLevel)
