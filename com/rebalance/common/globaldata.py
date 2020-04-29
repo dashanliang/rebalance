@@ -13,9 +13,10 @@ from xlutils.copy import copy
 import numpy as np
 # from com.rebalance.common.globaldata import *
 
+filename = '/Users/jinglan.liang/Downloads/demo3.xlsx'
 def getMhdatabal():
     # 打开文件
-    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo2.xlsx')
+    data = xlrd.open_workbook(filename)
     table = data.sheet_by_name('Sheet1')
 
     tmpExceldata = ''
@@ -51,7 +52,7 @@ def getMhdatabal():
 
 def getMhdata():
     # 打开文件
-    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo2.xlsx')
+    data = xlrd.open_workbook(filename)
     table = data.sheet_by_name('Sheet1')
 
     tmpExceldata = ''
@@ -86,7 +87,7 @@ def getMhdata():
     return tmpExceldata
 
 def writefile(data11 = [[]]):
-    data = xlrd.open_workbook('/Users/jinglan.liang/Downloads/demo2.xlsx')
+    data = xlrd.open_workbook(filename)
     table = data.sheet_by_name('Sheet1')
     copy_workbook = copy(data)
     wb = copy_workbook.get_sheet(0)
@@ -102,7 +103,7 @@ def writefile(data11 = [[]]):
                         break
                 i  = i + 1
 
-    copy_workbook.save("/Users/jinglan.liang/Downloads/demo2.xlsx")
+    copy_workbook.save(filename)
 
     return
 

@@ -382,7 +382,7 @@ def linearCalcuteForData(maxlevel = 0, goalalldata = []):
         boundsList.append((0, None))
 
     res = optimize.linprog(goalalldata, A_ub=a, b_ub=b,
-                           bounds=tuple(boundsList))
+                           bounds=tuple(boundsList), method='revised simplex')
 
     print(res)
     print(goalalldata)
@@ -459,7 +459,7 @@ def linearCalcuteForReal(maxlevel = 0, goalalldata = []):
     print(a)
     balancedatas = []
     for bd in mhrebalance:
-        balancedatas.append(bd[0] -bd[1])
+        balancedatas.append(bd[0] - bd[1])
 
     # b = np.array([ANZ_BALANCE-ANZ_NEED,
     #               CC_BALANCE-CC_NEED,
@@ -474,7 +474,7 @@ def linearCalcuteForReal(maxlevel = 0, goalalldata = []):
         boundsList.append((0, None))
 
     res = optimize.linprog(goalalldata, A_ub=a, b_ub=b,
-                           bounds=tuple(boundsList))
+                           bounds=tuple(boundsList), method='revised simplex')
 
     print(res)
     print(goalalldata)
