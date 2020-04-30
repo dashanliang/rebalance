@@ -21,8 +21,8 @@ def getMhdatabal():
 
     tmpExceldata = ''
 
-    for row in np.arange(1, 11 , 1):
-        for col in np.arange(1, 11, 1):
+    for row in np.arange(1, 12 , 1):
+        for col in np.arange(1, 12, 1):
             tmp = table.cell(row, col).value
             if tmp != '':
                 if tmpExceldata == '':
@@ -34,14 +34,14 @@ def getMhdatabal():
 
     tmpExceldataForBal = ''
 
-    for colForbal in np.arange(1, 11, 1):
-        tmpbal = table.cell(11, colForbal).value
+    for colForbal in np.arange(1, 12, 1):
+        tmpbal = table.cell(12, colForbal).value
         if tmpbal != '':
             if tmpExceldataForBal == '':
-                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
                                           default=lambda obj: obj.__dict__)
             else:
-                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
                                           default=lambda obj: obj.__dict__)
 
     print(tmpExceldataForBal)
@@ -57,8 +57,8 @@ def getMhdata():
 
     tmpExceldata = ''
 
-    for row in np.arange(1, 11 , 1):
-        for col in np.arange(1, 11, 1):
+    for row in np.arange(1, 12 , 1):
+        for col in np.arange(1, 12, 1):
             tmp = table.cell(row, col).value
             if tmp != '':
                 if tmpExceldata == '':
@@ -70,14 +70,14 @@ def getMhdata():
 
     tmpExceldataForBal = ''
 
-    for colForbal in np.arange(1, 11, 1):
-        tmpbal = table.cell(11, colForbal).value
+    for colForbal in np.arange(1, 12, 1):
+        tmpbal = table.cell(12, colForbal).value
         if tmpbal != '':
             if tmpExceldataForBal == '':
-                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
                                           default=lambda obj: obj.__dict__)
             else:
-                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(11, colForbal).value, table.cell(12, colForbal).value),
+                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
                                           default=lambda obj: obj.__dict__)
 
     print(tmpExceldataForBal)
@@ -93,13 +93,13 @@ def writefile(data11 = [[]]):
     wb = copy_workbook.get_sheet(0)
 
     i = 0
-    for row in np.arange(1, 11 , 1):
-        for col in np.arange(1, 11, 1):
+    for row in np.arange(1, 12 , 1):
+        for col in np.arange(1, 12, 1):
             tmp = table.cell(row, col).value
             if tmp != '':
                 for da in data11:
                     if int(da[0]) == i:
-                        wb.write(row + 16, col, da[1])
+                        wb.write(row + 17, col, da[1])
                         break
                 i  = i + 1
 
