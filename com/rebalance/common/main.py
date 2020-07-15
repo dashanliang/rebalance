@@ -213,33 +213,33 @@ def generalItemsForEachLevel(level = 0, maxatleast = 0):
 # # analysis all mh details
 # ANZ_OUT = [[x1], [x2], [x3]]
 # ANZ_IN = [[x5], [x9, x8], [x4]]
-ANZ_BALANCE = 0
-ANZ_NEED = 20
+# ANZ_BALANCE = 0
+# ANZ_NEED = 20
 #
 # CC_OUT = [[], [], [x4]]
 # CC_IN = [[], [x10], []]
-CC_BALANCE = 0
-CC_NEED = 20
+# CC_BALANCE = 0
+# CC_NEED = 20
 #
 # SCBHK_OUT = [[x5], [x6], []]
 # SCBHK_IN = [[x7], [], [x3]]
-SCBHK_BALANCE = 0
-SCBHK_NEED = 20
+# SCBHK_BALANCE = 0
+# SCBHK_NEED = 20
 #
 # SCBSG_OUT = [[x7], [x8], []]
 # SCBSG_IN = [[x1], [x6], []]
-SCBSG_BALANCE = 1000
-SCBSG_NEED = 0
+# SCBSG_BALANCE = 1000
+# SCBSG_NEED = 0
 #
 # DBHK_OUT = [[], [x9, x10], []]
 # DBHK_IN = [[], [], []]
-DBHK_BALANCE = 0
-DBHK_NEED = 50
+# DBHK_BALANCE = 0
+# DBHK_NEED = 50
 #
 # DBSHK_OUT = [[], [], []]
 # DBSHK_IN = [[], [x2], []]
-DBSHK_BALANCE = 500
-DBSHK_NEED = 0
+# DBSHK_BALANCE = 500
+# DBSHK_NEED = 0
 
 # check level one is ok or not
 # goal1 = len(ANZ_IN[0]) + len(CC_IN[0]) + len(SCBHK_IN[0]) + len(SCBSG_IN[0]) + len(DBHK_IN[0]) + len(DBSHK_IN[0])
