@@ -13,16 +13,17 @@ from xlutils.copy import copy
 import numpy as np
 # from com.rebalance.common.globaldata import *
 
-filename= "C:\\Users\\guxia\\PycharmProjects\\rebalance\\CAD.xlsx"
-def getMhdatabal():
+filename = "C:\\Users\\guxia\\PycharmProjects\\rebalance\\moneyhouse.xlsx"
+# sheetname = ""
+def getMhdatabal(sheetname):
     # 打开文件
     data = xlrd.open_workbook(filename)
-    table = data.sheet_by_name('Sheet1')
+    table = data.sheet_by_name(sheetname)
 
     tmpExceldata = ''
 
-    for row in np.arange(1, 12 , 1):
-        for col in np.arange(1, 12, 1):
+    for row in np.arange(1, 16 , 1):
+        for col in np.arange(1, 16, 1):
             tmp = table.cell(row, col).value
             if tmp != '':
                 if tmpExceldata == '':
@@ -34,14 +35,14 @@ def getMhdatabal():
 
     tmpExceldataForBal = ''
 
-    for colForbal in np.arange(1, 12, 1):
-        tmpbal = table.cell(12, colForbal).value
+    for colForbal in np.arange(1, 16, 1):
+        tmpbal = table.cell(16, colForbal).value
         if tmpbal != '':
             if tmpExceldataForBal == '':
-                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
+                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(16, colForbal).value, table.cell(17, colForbal).value),
                                           default=lambda obj: obj.__dict__)
             else:
-                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
+                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(16, colForbal).value, table.cell(17, colForbal).value),
                                           default=lambda obj: obj.__dict__)
 
     print(tmpExceldataForBal)
@@ -50,15 +51,15 @@ def getMhdatabal():
     # testdata = tmpExceldata
     return tmpExceldataForBal
 
-def getMhdata():
+def getMhdata(sheetname):
     # 打开文件
     data = xlrd.open_workbook(filename)
-    table = data.sheet_by_name('Sheet1')
+    table = data.sheet_by_name(sheetname)
 
     tmpExceldata = ''
 
-    for row in np.arange(1, 12 , 1):
-        for col in np.arange(1, 12, 1):
+    for row in np.arange(1, 16 , 1):
+        for col in np.arange(1, 16, 1):
             tmp = table.cell(row, col).value
             if tmp != '':
                 if tmpExceldata == '':
@@ -70,14 +71,14 @@ def getMhdata():
 
     tmpExceldataForBal = ''
 
-    for colForbal in np.arange(1, 12, 1):
-        tmpbal = table.cell(12, colForbal).value
+    for colForbal in np.arange(1, 16, 1):
+        tmpbal = table.cell(16, colForbal).value
         if tmpbal != '':
             if tmpExceldataForBal == '':
-                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
+                tmpExceldataForBal = json.dumps(mhdata('mh'+ str(colForbal), table.cell(16, colForbal).value, table.cell(17, colForbal).value),
                                           default=lambda obj: obj.__dict__)
             else:
-                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(12, colForbal).value, table.cell(13, colForbal).value),
+                tmpExceldataForBal = tmpExceldataForBal + ";" + json.dumps(mhdata('mh'+ str(colForbal), table.cell(16, colForbal).value, table.cell(17, colForbal).value),
                                           default=lambda obj: obj.__dict__)
 
     print(tmpExceldataForBal)
@@ -86,20 +87,20 @@ def getMhdata():
     # testdata = tmpExceldata
     return tmpExceldata
 
-def writefile(data11 = [[]]):
+def writefile(data11 = [[]], sheetname = ''):
     data = xlrd.open_workbook(filename)
-    table = data.sheet_by_name('Sheet1')
+    table = data.sheet_by_name(sheetname)
     copy_workbook = copy(data)
     wb = copy_workbook.get_sheet(0)
 
     i = 0
-    for row in np.arange(1, 12 , 1):
-        for col in np.arange(1, 12, 1):
+    for row in np.arange(1, 16 , 1):
+        for col in np.arange(1, 16, 1):
             tmp = table.cell(row, col).value
             if tmp != '':
                 for da in data11:
                     if int(da[0]) == i:
-                        wb.write(row + 17, col, da[1])
+                        wb.write(row + 21, col, da[1])
                         break
                 i  = i + 1
 
@@ -157,23 +158,23 @@ class dataforpath:
         self.toMh = toMh
         self.level = level
 
-x1 = data("anz", "scbhk", 0)
-x2 = data("anz", "dbhk", 1)
-x3 = data("anz", "scbsg", 1)
-x4 = data("anz", "cc", 2)
-x5 = data("cc", "dbhk", 2)
-x6 = data("scbhk","scbsg",0)
-x7 = data("scbhk", "anz", 2)
-x8 = data("scbsg", "anz", 0)
-x9 = data("scbsg", "scbhk", 1)
-x10 = data("dbshk", "anz", 1)
-
-x11 = mhdata("anz", 0, 20)
-x21 = mhdata("cc", 0, 20)
-x31 = mhdata("scbhk", 0, 20)
-x41 = mhdata("scbsg", 1000, 0)
-x51 = mhdata("dbhk", 0, 50)
-x61 = mhdata("dbshk",500,0)
+# x1 = data("anz", "scbhk", 0)
+# x2 = data("anz", "dbhk", 1)
+# x3 = data("anz", "scbsg", 1)
+# x4 = data("anz", "cc", 2)
+# x5 = data("cc", "dbhk", 2)
+# x6 = data("scbhk","scbsg",0)
+# x7 = data("scbhk", "anz", 2)
+# x8 = data("scbsg", "anz", 0)
+# x9 = data("scbsg", "scbhk", 1)
+# x10 = data("dbshk", "anz", 1)
+#
+# x11 = mhdata("anz", 0, 20)
+# x21 = mhdata("cc", 0, 20)
+# x31 = mhdata("scbhk", 0, 20)
+# x41 = mhdata("scbsg", 1000, 0)
+# x51 = mhdata("dbhk", 0, 50)
+# x61 = mhdata("dbshk",500,0)
 
 # print(json.dumps(x1, default=lambda obj: obj.__dict__), ";",
 #       json.dumps(x2, default=lambda obj: obj.__dict__), ";",
@@ -202,8 +203,11 @@ def datatoclassMhdata(d):
     return mhdata(d['mhName'], d['balance'], d['need'])
 
 
-testdata = getMhdata()
-testmhdata = getMhdatabal()
+# testdata = ""
+# testmhdata = ""
+def getalldatafromexcel(sheetname):
+    testdata = getMhdata(sheetname)
+    testmhdata = getMhdatabal(sheetname)
 # = '{"fromMh": "anz", "toMh": "scbhk", "level": 0} ; {"fromMh": "anz", "toMh": "dbhk", "level": 1} ; {"fromMh": "anz", "toMh": "scbsg", "level": 1} ; {"fromMh": "anz", "toMh": "cc", "level": 2} ; {"fromMh": "cc", "toMh": "dbhk", "level": 1} ; {"fromMh": "scbhk", "toMh": "scbsg", "level": 0} ; {"fromMh": "scbhk", "toMh": "anz", "level": 2} ; {"fromMh": "scbsg", "toMh": "anz", "level": 0} ; {"fromMh": "scbsg", "toMh": "scbhk", "level": 1} ; {"fromMh": "dbshk", "toMh": "anz", "level": 1}'
 # testmhdata = '{"mhName": "anz", "balance": 0, "need": 20} ; {"mhName": "cc", "balance": 0, "need": 20} ; {"mhName": "scbhk", "balance": 0, "need": 20} ; {"mhName": "scbsg", "balance": 1000, "need": 0} ; {"mhName": "dbhk", "balance": 0, "need": 50} ; {"mhName": "dbshk", "balance": 500, "need": 0}'
 
@@ -215,12 +219,14 @@ mhindata = []
 markdata = []
 
 
-def getmhdata(data1 = testmhdata):
+def getmhdata(sheetname):
+    data1 = getMhdatabal(sheetname)
     for eachnode in data1.split(";"):
         nodeclass = json.loads(eachnode, object_hook = datatoclassMhdata)
         mhnames.append(nodeclass.mhName)
 
-def getmhdatabalance(data1 = testmhdata):
+def getmhdatabalance(sheetname):
+    data1 = getMhdatabal(sheetname)
     for eachnode in data1.split(";"):
         mhbalance = []
         nodeclass = json.loads(eachnode, object_hook = datatoclassMhdata)
@@ -265,7 +271,8 @@ def setdata(level , frommh = "", tomh = "", markdata = "",  allindata = [[[]]], 
     # allindata[int(level)][mhinindex].append(markdata)
     return None
 
-def getdataOut(data = testdata, allindata = mhindata, alloutdata = mhoutdata):
+def getdataOut(sheetname, allindata = mhindata, alloutdata = mhoutdata):
+    data = getMhdata(sheetname)
     i = 0
     tmpin = allindata
     tmpout = alloutdata
