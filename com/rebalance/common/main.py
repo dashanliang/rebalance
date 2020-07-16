@@ -549,6 +549,8 @@ def canRebalanceOrNot(needcheck = 0, datas = [[]]):
         for dd in data :
             if type(dd).__name__  == "int64":
                 checkdate.append(dd)
+            elif type(dd).__name__  == "int32":
+                checkdate.append(dd)
             else:
                 checkdate.extend(dd)
     # need add funtion to linear

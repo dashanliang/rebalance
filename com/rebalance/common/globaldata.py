@@ -13,7 +13,7 @@ from xlutils.copy import copy
 import numpy as np
 # from com.rebalance.common.globaldata import *
 
-filename = '/Users/jinglan.liang/Downloads/CAD-OPS.xlsx'
+filename= "C:\\Users\\guxia\\PycharmProjects\\rebalance\\CAD.xlsx"
 def getMhdatabal():
     # 打开文件
     data = xlrd.open_workbook(filename)
