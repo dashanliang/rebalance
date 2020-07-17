@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89614635-f605-4117-8b32-df9d5eae0ffc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/moneyhouse.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/rebalance/common/globaldata.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/common/globaldata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/rebalance/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/com/rebalance/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/common/corefuntion.py" beforeDir="false" afterPath="$PROJECT_DIR$/corefuntion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/common/excelExec.py" beforeDir="false" afterPath="$PROJECT_DIR$/excelExec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/common/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/common/globaldata.py" beforeDir="false" afterPath="$PROJECT_DIR$/globaldata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/common/gradient.py" beforeDir="false" afterPath="$PROJECT_DIR$/gradient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/common/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/rebalance/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,12 +33,14 @@
       </map>
     </option>
   </component>
+  <component name="ProjectId" id="1emBBvvD8832pd1NLMzCuSKAUwc" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\guxia\PycharmProjects\rebalance" />
+      <recent name="C:\Users\guxia\PycharmProjects\rebalance\com\rebalance\dist\server" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -61,7 +68,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/com/rebalance/controller.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\guxia\PycharmProjects\rebalance\controller.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -82,7 +89,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/com/rebalance/common/excelExec.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\guxia\PycharmProjects\rebalance\excelExec.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -103,7 +110,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/com/rebalance/common/globaldata.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\guxia\PycharmProjects\rebalance\globaldata.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -124,7 +131,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/com/rebalance/server.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\guxia\PycharmProjects\rebalance\server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,131 +203,142 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>255</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>302</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>249</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>202</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>221</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>228</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>236</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>235</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/functions.py</url>
+          <url>file://$PROJECT_DIR$/functions.py</url>
           <line>290</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/corefuntion.py</url>
+          <url>file://$PROJECT_DIR$/corefuntion.py</url>
           <line>92</line>
           <option name="timeStamp" value="245" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/corefuntion.py</url>
+          <url>file://$PROJECT_DIR$/corefuntion.py</url>
           <line>100</line>
           <option name="timeStamp" value="246" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/corefuntion.py</url>
+          <url>file://$PROJECT_DIR$/corefuntion.py</url>
           <line>36</line>
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/corefuntion.py</url>
+          <url>file://$PROJECT_DIR$/corefuntion.py</url>
           <line>29</line>
           <option name="timeStamp" value="248" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
+          <url>file://$PROJECT_DIR$/excelExec.py</url>
           <line>56</line>
           <option name="timeStamp" value="345" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
+          <url>file://$PROJECT_DIR$/excelExec.py</url>
           <line>58</line>
           <option name="timeStamp" value="346" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
+          <url>file://$PROJECT_DIR$/excelExec.py</url>
           <line>57</line>
           <option name="timeStamp" value="347" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/controller.py</url>
+          <url>file://$PROJECT_DIR$/controller.py</url>
           <line>176</line>
           <option name="timeStamp" value="348" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/excelExec.py</url>
+          <url>file://$PROJECT_DIR$/excelExec.py</url>
           <line>42</line>
           <option name="timeStamp" value="350" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/controller.py</url>
+          <url>file://$PROJECT_DIR$/controller.py</url>
           <line>142</line>
           <option name="timeStamp" value="352" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/controller.py</url>
+          <url>file://$PROJECT_DIR$/controller.py</url>
           <line>113</line>
           <option name="timeStamp" value="364" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/controller.py</url>
+          <url>file://$PROJECT_DIR$/controller.py</url>
           <line>117</line>
           <option name="timeStamp" value="365" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/controller.py</url>
+          <url>file://$PROJECT_DIR$/controller.py</url>
           <line>121</line>
           <option name="timeStamp" value="367" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/main.py</url>
+          <url>file://$PROJECT_DIR$/main.py</url>
           <line>475</line>
           <option name="timeStamp" value="368" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/globaldata.py</url>
+          <url>file://$PROJECT_DIR$/globaldata.py</url>
           <line>265</line>
           <option name="timeStamp" value="371" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/com/rebalance/common/globaldata.py</url>
+          <url>file://$PROJECT_DIR$/globaldata.py</url>
           <line>20</line>
           <option name="timeStamp" value="376" />
         </line-breakpoint>
