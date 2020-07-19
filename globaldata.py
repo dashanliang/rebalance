@@ -13,7 +13,7 @@ from xlutils.copy import copy
 import numpy as np
 # from com.rebalance.common.globaldata import *
 
-filename = "D:\\moneyhouse-data.xlsx"
+filename = "moneyhouse-data.xlsx"
 # sheetname = ""
 def getMhdatabal(sheetname):
     # 打开文件
@@ -91,7 +91,12 @@ def writefile(data11 = [[]], sheetname = ''):
     data = xlrd.open_workbook(filename)
     table = data.sheet_by_name(sheetname)
     copy_workbook = copy(data)
-    wb = copy_workbook.get_sheet(0)
+    for sno in np.arange(0, 5, 1):
+        if copy_workbook.get_sheet(int(sno)).name == sheetname :
+            wb = copy_workbook.get_sheet(int(sno))
+            break
+        if sno == 4 :
+            return
 
     i = 0
     for row in np.arange(1, 16 , 1):
